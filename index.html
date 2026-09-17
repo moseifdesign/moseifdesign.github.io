@@ -1,0 +1,2703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Seif — YouTube Thumbnail Designer</title>
+  
+  <!-- Font: Instrument Sans Only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>/* ==========================================================================
+   MOHAMED SEIF — REFINED PORTFOLIO SYSTEM
+   FONT: INSTRUMENT SANS EXCLUSIVELY
+   BRAND TOKENS: #08080A, #CEFD00, #F7F7F5, #9A9A9F, #101012, #151518
+   ========================================================================== */
+
+:root {
+  --bg: #08080A;
+  --surface: #101012;
+  --surface-2: #151518;
+  --surface-3: #1B1B20;
+  --main-text: #F7F7F5;
+  --muted-text: #9A9A9F;
+  --subtle-text: #505058;
+  --accent: #CEFD00;
+  --accent-glow: rgba(206, 253, 0, 0.25);
+  --border: rgba(247, 247, 245, 0.13);
+  --border-subtle: rgba(247, 247, 245, 0.06);
+  --border-active: rgba(206, 253, 0, 0.45);
+  
+  --font: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --container-max: 1220px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--main-text);
+  font-family: var(--font);
+  line-height: 1.55;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--main-text);
+  overflow-x: hidden;
+  position: relative;
+}
+
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, input, select, textarea {
+    cursor: none !important;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: #08080A;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ==========================================================================
+   MINIMAL CUSTOM CURSOR (DOT + RING, NO WORDS)
+   ========================================================================== */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10002;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(206, 253, 0, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  transition: width 0.22s var(--ease-expo), height 0.22s var(--ease-expo), border-color 0.2s ease, background 0.2s ease;
+}
+
+.cursor-ring.is-hovering {
+  width: 50px;
+  height: 50px;
+  border-color: var(--accent);
+  background: rgba(206, 253, 0, 0.08);
+}
+
+.cursor-ring.is-cta {
+  width: 56px;
+  height: 56px;
+  border-color: var(--accent);
+  background: rgba(206, 253, 0, 0.18);
+}
+
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   TOP NAVIGATION WITH ACTIVE SECTION TRACKER
+   ========================================================================== */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(8, 8, 10, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Clean Brand Name (No glowing dot) */
+.brand-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--main-text);
+}
+
+/* Subtle green brand segment */
+.brand-accent-part {
+  display: inline;
+  margin-left: 3px;
+  padding: 0;
+  background: transparent;
+  color: var(--accent);
+  border-radius: 0;
+  line-height: inherit;
+}
+
+/* Section Tracker at Top */
+.nav-sections {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.86rem;
+  color: var(--muted-text);
+  letter-spacing: 0.06em;
+  transition: color 0.2s ease, transform 0.2s var(--ease-expo);
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--subtle-text);
+  transition: color 0.2s ease;
+}
+
+.nav-text {
+  font-weight: 500;
+}
+
+.nav-link-item:hover {
+  color: var(--main-text);
+}
+
+.nav-link-item.active {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.nav-link-item.active .nav-num {
+  color: var(--accent);
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s var(--ease-expo);
+}
+
+.nav-link-item.active::after {
+  width: 100%;
+}
+
+.nav-cta-btn {
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--main-text);
+  transition: all 0.25s var(--ease-expo);
+}
+
+.nav-cta-btn:hover {
+  background: var(--accent);
+  color: #08080A;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   01. HERO (CENTERED STATEMENT & 12 SCROLL-REACTIVE FLOATING THUMBNAILS)
+   ========================================================================== */
+.hero-section {
+  min-height: calc(100vh - 80px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0 110px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 12 SCROLL-REACTIVE FLOATING THUMBNAILS VIEWPORT */
+.floating-fragments-viewport {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.floating-fragments-viewport.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.hero-fragment {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 225px;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  border: 1px solid rgba(247, 247, 245, 0.18);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+  pointer-events: auto;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-fragment:hover {
+  border-color: var(--accent);
+  box-shadow: 0 24px 60px var(--accent-glow);
+  z-index: 100 !important;
+}
+
+/* JS owns the orbital transform; these classes only preserve per-card depth. */
+.hf-1, .hf-2, .hf-3, .hf-4, .hf-5, .hf-6,
+.hf-7, .hf-8, .hf-9, .hf-10, .hf-11, .hf-12 {
+  right: auto;
+  bottom: auto;
+  top: 50%;
+  left: 50%;
+}
+.hf-7, .hf-8, .hf-10, .hf-12 { filter: none; }
+
+/* Smooth, restrained floating motion is blended into the orbital JS animation. */
+
+.frag-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.frag-tag {
+  align-self: flex-start;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  padding: 2px 7px;
+  background: rgba(8, 8, 10, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.frag-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+}
+
+/* CENTERED HERO CONTENT */
+.hero-content-center {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--muted-text);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: heroTextReveal 0.8s var(--ease-expo) 0.1s forwards;
+}
+
+.hero-main-statement {
+  font-size: clamp(3.2rem, 7.8vw, 6.8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--main-text);
+  margin-bottom: 32px;
+}
+
+.statement-row {
+  display: block;
+  overflow: hidden;
+}
+
+.statement-word {
+  display: inline-block;
+  transform: translateY(115%);
+  animation: wordSlideUp 0.9s var(--ease-expo) forwards;
+}
+
+.statement-row:nth-child(1) .statement-word { animation-delay: 0.2s; }
+.statement-row:nth-child(2) .statement-word { animation-delay: 0.32s; }
+.statement-row:nth-child(3) .statement-word { animation-delay: 0.44s; }
+
+@keyframes wordSlideUp {
+  0% { transform: translateY(115%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes heroTextReveal {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.lime-text {
+  color: var(--accent);
+}
+
+.hero-subtext-para {
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+  line-height: 1.65;
+  color: var(--muted-text);
+  max-width: 660px;
+  margin: 0 auto 38px;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: heroTextReveal 0.8s var(--ease-expo) 0.55s forwards;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: heroTextReveal 0.8s var(--ease-expo) 0.68s forwards;
+}
+
+.editorial-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px 36px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: all 0.3s var(--ease-expo);
+  white-space: nowrap;
+}
+
+.editorial-btn.primary {
+  background: var(--accent);
+  color: #08080A;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.editorial-btn.primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(206, 253, 0, 0.45);
+}
+
+.editorial-btn.secondary {
+  background: var(--surface);
+  color: var(--main-text);
+  border: 1px solid var(--border);
+}
+
+.editorial-btn.secondary:hover {
+  background: var(--surface-2);
+  border-color: rgba(247, 247, 245, 0.35);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* ==========================================================================
+   02. WORK SECTION (VISIBLE EXPOSED ARTWORK ARCHIVE)
+   ========================================================================== */
+.work-section {
+  padding: 130px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section-lead-block {
+  margin-bottom: 64px;
+}
+
+.section-tag-indicator {
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+.section-main-heading {
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: var(--main-text);
+  margin-bottom: 16px;
+}
+
+.section-lead-desc {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--muted-text);
+  max-width: 680px;
+}
+
+.work-entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.work-entry-card {
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr;
+  gap: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 34px 38px;
+  align-items: center;
+  transition: all 0.35s var(--ease-expo);
+  cursor: pointer;
+}
+
+.work-entry-card:hover {
+  background: var(--surface-2);
+  border-color: var(--border-active);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+}
+
+.work-entry-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.entry-index {
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.entry-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--main-text);
+  line-height: 1.2;
+  transition: color 0.2s ease;
+}
+
+.work-entry-card:hover .entry-title {
+  color: var(--accent);
+}
+
+.entry-category {
+  font-size: 0.82rem;
+  color: var(--muted-text);
+}
+
+.entry-summary {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--muted-text);
+}
+
+.entry-kpi-badge {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  background: rgba(206, 253, 0, 0.08);
+  color: var(--accent);
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(206, 253, 0, 0.3);
+  margin-top: 4px;
+}
+
+.work-entry-preview {
+  position: relative;
+}
+
+.entry-artwork-box {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(247, 247, 245, 0.15);
+  position: relative;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+}
+
+.entry-artwork-canvas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease-expo);
+}
+
+.work-entry-card:hover .entry-artwork-canvas {
+  transform: scale(1.04);
+}
+
+.canvas-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+}
+
+.entry-hover-action {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  background: rgba(8, 8, 10, 0.9);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   03. PROCESS (EDITORIAL ROWS)
+   ========================================================================== */
+.process-section {
+  padding: 130px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.editorial-timeline-stack {
+  border-top: 1px solid var(--border);
+}
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 70px 1.1fr 1.6fr;
+  gap: 32px;
+  padding: 40px 20px;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+  transition: background 0.3s ease;
+}
+
+.timeline-entry:hover {
+  background: var(--surface);
+}
+
+.te-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.te-name {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--main-text);
+}
+
+.te-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--subtle-text);
+  text-transform: uppercase;
+}
+
+.te-desc {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--muted-text);
+}
+
+/* ==========================================================================
+   04. SERVICES (EDITORIAL ROWS)
+   ========================================================================== */
+.services-section {
+  padding: 130px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.editorial-services-stack {
+  border-top: 1px solid var(--border);
+}
+
+.service-entry-row {
+  display: grid;
+  grid-template-columns: 70px 1.2fr 1.6fr 60px;
+  gap: 32px;
+  padding: 44px 20px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: all 0.3s var(--ease-expo);
+  cursor: pointer;
+}
+
+.service-entry-row:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+  transform: translateX(8px);
+}
+
+.ser-num {
+  font-size: 0.85rem;
+  color: var(--subtle-text);
+}
+
+.ser-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--main-text);
+  transition: color 0.2s ease;
+}
+
+.service-entry-row:hover .ser-title {
+  color: var(--accent);
+}
+
+.ser-rate {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-top: 4px;
+}
+
+.ser-detail {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--muted-text);
+}
+
+.ser-arrow {
+  font-size: 1.4rem;
+  color: var(--subtle-text);
+  transition: transform 0.25s var(--ease-expo), color 0.2s ease;
+  text-align: right;
+}
+
+.service-entry-row:hover .ser-arrow {
+  transform: translateX(6px);
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   05. CONTACT
+   ========================================================================== */
+.contact-section {
+  padding: 130px 0 110px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.editorial-contact-stage {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: clamp(48px, 6vw, 96px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.editorial-contact-stage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.editorial-contact-headline {
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.045em;
+  margin: 16px 0 36px;
+  color: var(--main-text);
+}
+
+.contact-action-box {
+  margin-bottom: 56px;
+}
+
+.editorial-contact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  padding-top: 48px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-card-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.unit-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: var(--subtle-text);
+  text-transform: uppercase;
+}
+
+.unit-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--main-text);
+  transition: color 0.2s ease;
+}
+
+.unit-value:hover {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  padding: 56px 0 44px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-row-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.f-name {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.f-name .brand-accent-part {
+  padding: 0;
+  border-radius: 0;
+}
+
+.f-role {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--muted-text);
+  text-transform: uppercase;
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.f-quote {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--muted-text);
+  text-transform: uppercase;
+}
+
+.f-top {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--muted-text);
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.f-top:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .footer-row-flex {
+    align-items: flex-start;
+  }
+  .footer-meta {
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .f-quote {
+    max-width: 75%;
+    line-height: 1.5;
+  }
+}
+
+/* ==========================================================================
+   PROJECT VIEW OVERLAY (10 ITERATIONS)
+   ========================================================================== */
+.project-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 10, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 9000;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-expo);
+  padding: 60px 0;
+}
+
+.project-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-overlay-body {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.overlay-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.overlay-index {
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.overlay-close-btn {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted-text);
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.overlay-close-btn:hover {
+  background: var(--accent);
+  color: #08080A;
+  border-color: var(--accent);
+}
+
+.overlay-hero-banner {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: flex-end;
+  padding: 36px;
+  background: #0d0d10;
+}
+
+.overlay-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay-banner-info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.overlay-cat-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.overlay-title-head {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+.overlay-scope-tag {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+}
+
+.overlay-strategy-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 56px;
+}
+
+.os-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--main-text);
+}
+
+.os-para {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted-text);
+}
+
+.os-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.os-list li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted-text);
+  padding-left: 18px;
+  position: relative;
+}
+
+.os-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.os-list strong {
+  color: var(--main-text);
+}
+
+.overlay-iterations-block {
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 48px;
+}
+
+.iterations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.iterations-count {
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.iterations-main-viewer {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18px;
+  background: #0d0d10;
+}
+
+.it-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(8, 8, 10, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.it-nav-btn:hover {
+  background: var(--accent);
+  color: #08080A;
+  border-color: var(--accent);
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+.it-card-canvas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  position: relative;
+}
+
+.it-canvas-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.it-canvas-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.it-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+.it-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.it-desc {
+  font-size: 0.88rem;
+  color: var(--muted-text);
+}
+
+.iterations-strip {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.it-mini-item {
+  flex: 0 0 110px;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted-text);
+  transition: all 0.2s ease;
+}
+
+.it-mini-item:hover, .it-mini-item.active {
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.it-mini-item.active {
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.overlay-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.of-arrow-btn {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--muted-text);
+  transition: color 0.2s ease;
+}
+
+.of-arrow-btn:hover {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   PROJECT BRIEF MODAL
+   ========================================================================== */
+.brief-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 10, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 9500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-expo);
+}
+
+.brief-modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.brief-card-frame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  max-width: 660px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 44px;
+  position: relative;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.35s var(--ease-expo);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85);
+}
+
+.brief-modal-overlay.is-active .brief-card-frame {
+  transform: translateY(0) scale(1);
+}
+
+.bm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.bm-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 6px 0;
+}
+
+.bm-sub {
+  font-size: 0.92rem;
+  color: var(--muted-text);
+}
+
+.bm-close-btn {
+  width: 38px;
+  height: 38px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--muted-text);
+  transition: all 0.2s ease;
+}
+
+.bm-close-btn:hover {
+  color: #fff;
+  border-color: var(--accent);
+  background: var(--surface-3);
+}
+
+.bm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bm-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.bm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bm-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+}
+
+.bm-input {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  color: var(--main-text);
+  font-family: var(--font);
+  font-size: 0.94rem;
+  transition: all 0.2s ease;
+}
+
+.bm-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+textarea.bm-input {
+  resize: vertical;
+  min-height: 95px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .work-entry-card {
+    grid-template-columns: 1fr;
+  }
+  .service-entry-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .ser-arrow { text-align: left; }
+  .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .overlay-strategy-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-sections {
+    display: none;
+  }
+  .hero-section {
+    padding: 70px 0 80px;
+  }
+  .hero-fragment {
+    width: 150px;
+  }
+  .hf-3, .hf-4, .hf-7, .hf-8 {
+    display: none !important;
+  }
+  .bm-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .editorial-contact-grid {
+    gap: 28px;
+  }
+  .brief-card-frame {
+    padding: 28px 20px;
+  }
+}
+
+/* V21: pinned introduction, artwork depth, and refined existing wordmark. */
+.hero-scroll-stage { position: relative; }
+.hero-scroll-stage .hero-section { position: sticky; top: 0; min-height: 100svh; isolation: isolate; }
+.floating-fragments-viewport { overflow: visible; z-index: auto; transition: none; }
+.hero-content-center { pointer-events: none; }
+.hero-content-center a, .hero-content-center button { pointer-events: auto; }
+.hero-fragment { overflow: hidden; }
+.awaiting-hero { visibility: hidden; pointer-events: none; }
+.brand-title { display: inline-flex; align-items: baseline; gap: 0.27em; font-size: 1.12rem; letter-spacing: -0.055em; line-height: 1; white-space: nowrap; }
+.brand-title .brand-accent-part { margin-left: 0; font-weight: 500; letter-spacing: -0.065em; }
+.f-name { letter-spacing: 0.07em; }
+.f-name .brand-accent-part { margin-left: 2px; letter-spacing: 0.035em; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-section *, .hero-section *::before, .hero-section *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; }
+}
+
+/* V22: all artwork stays beneath the copy, including hovered cards. */
+.floating-fragments-viewport { z-index: 1; }
+.hero-content-center { z-index: 10; }
+.hero-fragment:hover, .hero-fragment:focus-visible { z-index: 30 !important; outline: 1px solid var(--accent); outline-offset: 3px; }
+.hero-main-statement { text-shadow: 0 2px 18px var(--bg); }
+.brand-title { gap: 10px; align-items: center; }
+.seif-monogram { width: 35px; height: 35px; flex: 0 0 auto; color: var(--main-text); }
+.seif-wordmark { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.seif-wordmark .wordmark-first { font-size: 9px; font-weight: 500; letter-spacing: .21em; line-height: 1; }
+.brand-title .seif-wordmark .brand-accent-part { font-size: 21px; font-weight: 700; letter-spacing: -.045em; line-height: .95; }
+.f-name { display: inline-flex; align-items: center; gap: 10px; }
+.f-name .seif-monogram { width: 27px; height: 27px; }
+
+/* V23: bespoke Seif signature, drawn as vectors for crisp small sizes. */
+.brand-title .seif-signature { display: block; width: 122px; height: 54px; overflow: visible; }
+.f-name .seif-signature { display: block; width: 105px; height: 46px; }
+.brand-title { gap: 0; }
+
+/* V24: horizontal name signature and verified narrow-screen corrections. */
+.brand-title .seif-signature { width: 185px; height: 38px; }
+#home { scroll-margin-top: 80px; }
+.f-name .seif-signature { width: 161px; height: 32px; }
+.project-overlay:not(.is-active), .brief-modal-overlay:not(.is-active) { visibility: hidden; }
+.overlay-footer-row > * { min-width: 0; max-width: 100%; white-space: normal; text-align: center; }
+.bm-field { min-width: 0; }
+.bm-input { min-width: 0; }
+.iterations-header { gap: 12px; }
+.iterations-count { flex-shrink: 0; white-space: nowrap; }
+.hero-scroll-stage .hero-section { min-height: 100vh; min-height: 100svh; }
+@media(max-width: 1024px) and (min-width: 769px) {
+  .nav-sections { gap: 16px; }
+  .nav-container { gap: 12px; }
+}
+@media(max-width: 480px) {
+  .brand-title .seif-signature { width: 142px; height: 32px; }
+  .nav-container { padding-left: 16px; padding-right: 16px; gap: 10px; }
+  .nav-cta-btn { font-size: .68rem; padding-left: 12px; padding-right: 12px; white-space: nowrap; }
+  .project-overlay-body { padding-left: 20px; padding-right: 20px; }
+  .overlay-footer-row .editorial-btn { padding-left: 18px; padding-right: 18px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+@media(max-width:360px) {
+  .hero-main-statement { font-size: 2.6rem; }
+}
+</style>
+  
+  
+</head>
+<body>
+
+  <!-- ==========================================================================
+       MINIMAL CUSTOM CURSOR (DOT + RING, NO WORDS)
+       ========================================================================== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION WITH ACTIVE SECTION TRACKER AT THE TOP
+       ========================================================================== -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-container">
+      <!-- Clean Brand Name (No glowing dot) -->
+      <a href="#home" class="brand-title" aria-label="Mohamed Seif — Home"><svg class="seif-signature" viewBox="0 0 254 46" fill="none" aria-hidden="true"><path d="M16 6H8a5 5 0 0 0-5 5v7M30 40h8a5 5 0 0 0 5-5v-7" stroke="#CEFD00" stroke-width="3" stroke-linecap="square"/><path d="M33 12H19a6 6 0 0 0 0 12h8a6 6 0 0 1 0 12H13" stroke="#F7F7F5" stroke-width="5" stroke-linecap="square"/><text x="57" y="31" font-family="Instrument Sans,Arial,sans-serif" font-size="25" font-weight="600" letter-spacing="-1.05" fill="#F7F7F5">Mohamed <tspan dx="5" fill="#CEFD00">Seif</tspan></text></svg></a>
+
+      <!-- Active Section Indicator Links at Top -->
+      <nav class="nav-sections" id="navSections">
+        <a href="#home" class="nav-link-item active" data-section="home">
+          <span class="nav-text">HOME</span>
+        </a>
+        <a href="#work" class="nav-link-item" data-section="work">
+          <span class="nav-text">WORK</span>
+        </a>
+        <a href="#process" class="nav-link-item" data-section="process">
+          <span class="nav-text">PROCESS</span>
+        </a>
+        <a href="#services" class="nav-link-item" data-section="services">
+          <span class="nav-text">SERVICES</span>
+        </a>
+        <a href="#contact" class="nav-link-item" data-section="contact">
+          <span class="nav-text">CONTACT</span>
+        </a>
+      </nav>
+
+      <!-- Right Action CTA -->
+      <div class="nav-action">
+        <button class="nav-cta-btn trigger-brief" data-scope="Direct Inquiry">
+          <span>Start a project &rarr;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       01. HERO (IMMEDIATE KINETIC ENTRANCE + 12 SCROLL-DISPERSING THUMBNAILS)
+       ========================================================================== -->
+  <section class="hero-section" id="home">
+    
+    <!-- 12 SCROLL-REACTIVE FLOATING THUMBNAILS (ORBIT + FADE OUT ON SCROLL) -->
+    <div class="floating-fragments-viewport" id="fragmentsViewport">
+      <!-- 12 orbiting fragments; each remains clickable -->
+      <div class="hero-fragment hf-1" data-angle="-150" data-rot="-7" onclick="openProjectModal(0)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #261720, #0e090d);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-2" data-angle="-120" data-rot="6" onclick="openProjectModal(1)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #14202b, #0d1217);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-3" data-angle="-90" data-rot="-5" onclick="openProjectModal(2)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #2b1720, #140d12);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-4" data-angle="-60" data-rot="7" onclick="openProjectModal(3)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #1b281f, #0d1410);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-5" data-angle="-30" data-rot="-6" onclick="openProjectModal(4)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #2a2414, #141108);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-6" data-angle="0" data-rot="5" onclick="openProjectModal(5)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #24142a, #120a15);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-7" data-angle="30" data-rot="-4" onclick="openProjectModal(6)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #15272a, #0a1315);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-8" data-angle="60" data-rot="8" onclick="openProjectModal(7)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #2a1515, #140a0a);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-9" data-angle="90" data-rot="-9" onclick="openProjectModal(0)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #1a2228, #0b1014);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-10" data-angle="120" data-rot="5" onclick="openProjectModal(1)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #21172a, #100b14);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-11" data-angle="150" data-rot="-6" onclick="openProjectModal(2)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #292017, #120e0a);">
+          
+          
+        </div>
+      </div>
+
+      <div class="hero-fragment hf-12" data-angle="180" data-rot="7" onclick="openProjectModal(3)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #142720, #0a1410);">
+          
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTERED EDITORIAL HERO CONTENT -->
+    <div class="hero-content-center">
+      <div class="hero-eyebrow">
+        <span>MOHAMED SEIF &middot; YOUTUBE THUMBNAIL DESIGNER</span>
+      </div>
+
+      <h1 class="hero-main-statement">
+        <span class="statement-row"><span class="statement-word">Thumbnails</span></span>
+        <span class="statement-row"><span class="statement-word">that make</span></span>
+        <span class="statement-row"><span class="statement-word">people <span class="lime-text">stop.</span></span></span>
+      </h1>
+
+      <p class="hero-subtext-para">
+        Scroll-stopping designs engineered to boost your click-through rate, multiply your views, and grow your channel faster &mdash; without you touching Photoshop.
+      </p>
+
+      <div class="hero-cta-buttons">
+        <a href="#work" class="editorial-btn secondary">See the work &rarr;</a>
+        <button class="editorial-btn primary trigger-brief" data-scope="Direct Inquiry">Open the brief</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       02. WORK SECTION (VISIBLE EXPOSED ARTWORK ARCHIVE)
+       ========================================================================== -->
+  <section class="work-section" id="work">
+    <div class="container">
+      
+      <div class="section-lead-block">
+        <span class="section-tag-indicator">WORK</span>
+        <h2 class="section-main-heading">Selected work,<br>not a gallery dump.</h2>
+        <p class="section-lead-desc">
+          A curated archive of thumbnails built to read fast, feel distinct, and earn the first click.
+        </p>
+      </div>
+
+      <!-- EDITORIAL WORK ENTRIES WITH EXPOSED THUMBNAIL ARTWORK -->
+      <div class="work-entries-list">
+        
+        <!-- 01 -->
+        <article class="work-entry-card" onclick="openProjectModal(0)">
+          <div class="work-entry-text">
+            <span class="entry-index">01</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #261720 0%, #0e090d 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="work-entry-card" onclick="openProjectModal(1)">
+          <div class="work-entry-text">
+            <span class="entry-index">02</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #14202b 0%, #0d1217 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article class="work-entry-card" onclick="openProjectModal(2)">
+          <div class="work-entry-text">
+            <span class="entry-index">03</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #2b1720 0%, #140d12 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 -->
+        <article class="work-entry-card" onclick="openProjectModal(3)">
+          <div class="work-entry-text">
+            <span class="entry-index">04</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #1b281f 0%, #0d1410 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 -->
+        <article class="work-entry-card" onclick="openProjectModal(4)">
+          <div class="work-entry-text">
+            <span class="entry-index">05</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #2a2414 0%, #141108 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06 -->
+        <article class="work-entry-card" onclick="openProjectModal(5)">
+          <div class="work-entry-text">
+            <span class="entry-index">06</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #24142a 0%, #120a15 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 07 -->
+        <article class="work-entry-card" onclick="openProjectModal(6)">
+          <div class="work-entry-text">
+            <span class="entry-index">07</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #15272a 0%, #0a1315 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 08 -->
+        <article class="work-entry-card" onclick="openProjectModal(7)">
+          <div class="work-entry-text">
+            <span class="entry-index">08</span>
+          </div>
+          <div class="work-entry-preview">
+            <div class="entry-artwork-box">
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #2a1515 0%, #140a0a 100%);">
+              </div>
+              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       03. PROCESS SECTION (EDITORIAL ROWS)
+       ========================================================================== -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="section-lead-block">
+        <span class="section-tag-indicator">PROCESS</span>
+        <h2 class="section-main-heading">No black box.</h2>
+        <p class="section-lead-desc">
+          You know what happens at each stage, what you need to decide, and what you receive at the end &mdash; before we start.
+        </p>
+      </div>
+
+      <div class="editorial-timeline-stack">
+        <div class="timeline-entry">
+          <span class="te-num">01</span>
+          <div class="te-title-col">
+            <h3 class="te-name">Briefing</h3>
+            <span class="te-meta">ALIGNMENT</span>
+          </div>
+          <p class="te-desc">
+            We align on your video's core angle, target audience, title ideas, and collect raw footage/photos.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <span class="te-num">02</span>
+          <div class="te-title-col">
+            <h3 class="te-name">Research &amp; Concept</h3>
+            <span class="te-meta">FEED AUDIT</span>
+          </div>
+          <p class="te-desc">
+            I audit competitor feeds, find visual gaps, and draft 2&ndash;3 high-CTR hook concepts.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <span class="te-num">03</span>
+          <div class="te-title-col">
+            <h3 class="te-name">Design</h3>
+            <span class="te-meta">CRAFT</span>
+          </div>
+          <p class="te-desc">
+            Composing the primary scene, retouching facial expressions, color grading, and lighting calibration.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <span class="te-num">04</span>
+          <div class="te-title-col">
+            <h3 class="te-name">Production</h3>
+            <span class="te-meta">120PX TEST</span>
+          </div>
+          <p class="te-desc">
+            Generating A/B variants, running the 120px mobile test, and perfecting micro-contrast.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <span class="te-num">05</span>
+          <div class="te-title-col">
+            <h3 class="te-name">Delivery &amp; Handoff</h3>
+            <span class="te-meta">HANDOFF</span>
+          </div>
+          <p class="te-desc">
+            Upload-ready, lossless PNG files delivered with recommended title combinations, on time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       04. SERVICES SECTION (EDITORIAL ROWS)
+       ========================================================================== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-lead-block">
+        <span class="section-tag-indicator">SERVICES</span>
+        <h2 class="section-main-heading">Four ways to win the click.</h2>
+        <p class="section-lead-desc">
+          Transparent scopes tailored to your upload schedule. Select any scope to immediately open the brief.
+        </p>
+      </div>
+
+      <div class="editorial-services-stack">
+        <!-- 01 -->
+        <div class="service-entry-row trigger-brief" data-scope="Single Thumbnail ($60)">
+          <span class="ser-num">01</span>
+          <div class="ser-head-col">
+            <h3 class="ser-title">Single Thumbnail</h3>
+            <span class="ser-rate">$60</span>
+          </div>
+          <p class="ser-detail">
+            One-off thumbnail for a single upload. Fast turnaround, built to win the click against whatever else is on the feed.
+          </p>
+          <span class="ser-arrow">&rarr;</span>
+        </div>
+
+        <!-- 02 -->
+        <div class="service-entry-row trigger-brief" data-scope="Thumbnail Pack ($250)">
+          <span class="ser-num">02</span>
+          <div class="ser-head-col">
+            <h3 class="ser-title">Thumbnail Pack</h3>
+            <span class="ser-rate">$250</span>
+          </div>
+          <p class="ser-detail">
+            A batch of thumbnails for a content run &mdash; one visual language, no two looking alike.
+          </p>
+          <span class="ser-arrow">&rarr;</span>
+        </div>
+
+        <!-- 03 -->
+        <div class="service-entry-row featured trigger-brief" data-scope="Monthly Retainer ($550)">
+          <span class="ser-num">03</span>
+          <div class="ser-head-col">
+            <h3 class="ser-title">Monthly Retainer</h3>
+            <span class="ser-rate">$550</span>
+          </div>
+          <p class="ser-detail">
+            Ongoing thumbnail design for a consistent upload schedule and a reliable visual system.
+          </p>
+          <span class="ser-arrow">&rarr;</span>
+        </div>
+
+        <!-- 04 -->
+        <div class="service-entry-row trigger-brief" data-scope="Custom Project">
+          <span class="ser-num">04</span>
+          <div class="ser-head-col">
+            <h3 class="ser-title">Custom Project</h3>
+            <span class="ser-rate">Custom</span>
+          </div>
+          <p class="ser-detail">
+            Something outside the standard scopes? Tell me what you are building and we will shape the right setup.
+          </p>
+          <span class="ser-arrow">&rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       05. CONTACT (EDITORIAL CLOSING & BRIEF TRIGGER)
+       ========================================================================== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="editorial-contact-stage">
+        <span class="section-tag-indicator">CONTACT</span>
+        <h2 class="editorial-contact-headline">
+          Shall we put your<br>
+          project on the board?
+        </h2>
+
+        <div class="contact-action-box">
+          <button class="editorial-btn primary trigger-brief" data-scope="Direct Inquiry">
+            <span>Open the brief &rarr;</span>
+          </button>
+        </div>
+
+        <div class="editorial-contact-grid">
+          <div class="contact-card-unit">
+            <span class="unit-tag">EMAIL</span>
+            <a href="mailto:mhmd828827@gmail.com" class="unit-value">mhmd828827@gmail.com</a>
+          </div>
+          <div class="contact-card-unit">
+            <span class="unit-tag">PHONE / WHATSAPP</span>
+            <a href="tel:+201044301448" class="unit-value">01044301448</a>
+          </div>
+          <div class="contact-card-unit">
+            <span class="unit-tag">INSTAGRAM</span>
+            <a href="https://www.instagram.com/moseif.ps?stkn=bmVjNGlsZG5sY2M0&utm_source=qr" target="_blank" rel="noreferrer" class="unit-value">@moseif.ps</a>
+          </div>
+          <div class="contact-card-unit">
+            <span class="unit-tag">X / TWITTER</span>
+            <a href="https://x.com/mohamed42793918?s=11" target="_blank" rel="noreferrer" class="unit-value">@mohamed42793918</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row-flex">
+        <div class="footer-info">
+          <span class="f-name" aria-label="Mohamed Seif"><svg class="seif-signature" viewBox="0 0 254 46" fill="none" aria-hidden="true"><path d="M16 6H8a5 5 0 0 0-5 5v7M30 40h8a5 5 0 0 0 5-5v-7" stroke="#CEFD00" stroke-width="3" stroke-linecap="square"/><path d="M33 12H19a6 6 0 0 0 0 12h8a6 6 0 0 1 0 12H13" stroke="#F7F7F5" stroke-width="5" stroke-linecap="square"/><text x="57" y="31" font-family="Instrument Sans,Arial,sans-serif" font-size="25" font-weight="600" letter-spacing="-1.05" fill="#F7F7F5">Mohamed <tspan dx="5" fill="#CEFD00">Seif</tspan></text></svg></span>
+          <span class="f-role">YouTube Thumbnail Designer &middot; Strategy &middot; Visual Direction</span>
+        </div>
+        <div class="footer-meta">
+          <span class="f-quote">Tested, not guessed. &middot; &copy; 2026 Mohamed Seif. All rights reserved.</span>
+          <a href="#home" class="f-top">&uarr; Back to top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       PROJECT VIEW OVERLAY (EDITORIAL DRAWER & 10 PACKAGING ITERATIONS)
+       ========================================================================== -->
+  <div class="project-overlay" id="projectOverlay" aria-hidden="true">
+    <div class="project-overlay-body">
+      <div class="overlay-nav-bar">
+        <span class="overlay-index" id="overlayIndex">PROJECT 01 / 08</span>
+        <button class="overlay-close-btn" id="overlayCloseBtn">&times; Close</button>
+      </div>
+
+      <div class="overlay-hero-banner" id="overlayBanner">
+        <div class="overlay-banner-bg" id="overlayBannerBg"></div>
+        
+      </div>
+
+      <div class="overlay-strategy-row">
+        <div class="os-left">
+          <h4 class="os-heading">Strategic Context</h4>
+          <p class="os-para" id="overlayContext">
+            The premise demanded instantaneous clarity on mobile feeds where competing videos used generic oversaturated faces. We introduced micro-expression retouching, rim lighting separation, and removed 100% of distracting visual clutter.
+          </p>
+        </div>
+        <div class="os-right">
+          <h4 class="os-heading">Packaging Metrics</h4>
+          <ul class="os-list" id="overlayMetrics">
+            <li><strong>Focal Lock:</strong> Direct emotional gaze anchoring the primary third</li>
+            <li><strong>Feed Legibility:</strong> Tested and certified at 120px mobile scale</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 10 Thumbnail Packaging Iterations -->
+      <div class="overlay-iterations-block">
+        <div class="iterations-header">
+          <h4 class="os-heading">Packaging Variations (10 in File)</h4>
+          <span class="iterations-count" id="iterationsCount">01 / 10</span>
+        </div>
+
+        <div class="iterations-main-viewer">
+          <button class="it-nav-btn prev-btn" id="itPrevBtn">&larr;</button>
+          <button class="it-nav-btn next-btn" id="itNextBtn">&rarr;</button>
+
+          <div class="it-card-canvas" id="itCardCanvas">
+            <div class="it-canvas-bg" id="itCanvasBg"></div>
+            
+          </div>
+        </div>
+
+        <div class="iterations-strip" id="iterationsStrip"></div>
+      </div>
+
+      <div class="overlay-footer-row">
+        <button class="of-arrow-btn" id="prevProjectBtn">&larr; Previous Project</button>
+        <button class="editorial-btn primary trigger-brief" id="overlayBriefBtn" data-scope="Thumbnail Project">
+          Start a project with this direction &rarr;
+        </button>
+        <button class="of-arrow-btn" id="nextProjectBtn">Next Project &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       PROJECT BRIEF MODAL
+       ========================================================================== -->
+  <div class="brief-modal-overlay" id="briefModalOverlay" aria-hidden="true">
+    <div class="brief-card-frame">
+      <div class="bm-header">
+        <div>
+          <span class="section-tag-indicator" style="color: var(--accent);">PROJECT ONBOARDING</span>
+          <h3 class="bm-title">Open the brief</h3>
+          <p class="bm-sub">Fill in the details below to lock your production slot.</p>
+        </div>
+        <button class="bm-close-btn" id="closeBriefModalBtn">&times;</button>
+      </div>
+
+      <form id="editorialBriefForm" class="bm-form">
+        <div class="bm-row-2">
+          <div class="bm-field">
+            <label class="bm-label" for="bmName">Your Name *</label>
+            <input type="text" id="bmName" required class="bm-input" placeholder="e.g. Maverick Carter">
+          </div>
+          <div class="bm-field">
+            <label class="bm-label" for="bmEmail">Email Address *</label>
+            <input type="email" id="bmEmail" required class="bm-input" placeholder="name@channel.com">
+          </div>
+        </div>
+
+        <div class="bm-row-2">
+          <div class="bm-field">
+            <label class="bm-label" for="bmChannel">YouTube Channel Handle *</label>
+            <input type="text" id="bmChannel" required class="bm-input" placeholder="youtube.com/@yourchannel">
+          </div>
+          <div class="bm-field">
+            <label class="bm-label" for="bmLink">Reference / Unlisted Video Link</label>
+            <input type="url" id="bmLink" class="bm-input" placeholder="drive.google.com/... or unlisted link">
+          </div>
+        </div>
+
+        <div class="bm-row-2">
+          <div class="bm-field">
+            <label class="bm-label" for="bmScope">Selected Scope *</label>
+            <select id="bmScope" class="bm-input">
+              <option value="Single Thumbnail ($60)">Single Thumbnail &mdash; $60</option>
+              <option value="Thumbnail Pack ($250)">Thumbnail Pack &mdash; $250</option>
+              <option value="Monthly Retainer ($550)">Monthly Retainer &mdash; $550</option>
+              <option value="Custom Project">Custom Project</option>
+              <option value="Direct Inquiry">Direct Inquiry</option>
+            </select>
+          </div>
+          <div class="bm-field">
+            <label class="bm-label" for="bmDeadline">Target Deadline</label>
+            <input type="text" id="bmDeadline" class="bm-input" placeholder="e.g. 48 hours / Friday">
+          </div>
+        </div>
+
+        <div class="bm-field">
+          <label class="bm-label" for="bmDetails">Project Details &amp; Premise *</label>
+          <textarea id="bmDetails" required class="bm-input textarea" placeholder="What is the video title/premise? Who is the audience? What raw assets do you have?"></textarea>
+        </div>
+
+        <div class="bm-field">
+          <label class="bm-label" for="bmNotes">Additional Notes</label>
+          <input type="text" id="bmNotes" class="bm-input" placeholder="Any competitor thumbnails to beat?">
+        </div>
+
+        <button type="submit" class="editorial-btn primary" style="width: 100%; margin-top: 10px;">
+          Send brief &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+    <script>// ==========================================================================
+// MOHAMED SEIF — REFINED JAVASCRIPT ENGINE
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. MINIMAL CUSTOM CURSOR (DOT + RING, NO WORDS)
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mX = window.innerWidth / 2, mY = window.innerHeight / 2;
+  let rX = mX, rY = mY;
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      mX = e.clientX;
+      mY = e.clientY;
+    });
+
+    function renderCursor() {
+      rX += (mX - rX) * 0.22;
+      rY += (mY - rY) * 0.22;
+
+      dot.style.left = mX + 'px';
+      dot.style.top = mY + 'px';
+      ring.style.left = rX + 'px';
+      ring.style.top = rY + 'px';
+
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    // Dynamic scale states
+    document.querySelectorAll('a, button, input, select, textarea, .work-entry-card, .service-entry-row').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('is-hovering'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('is-hovering'));
+    });
+
+    document.querySelectorAll('.editorial-btn.primary, .nav-cta-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => ring.classList.add('is-cta'));
+      btn.addEventListener('mouseleave', () => ring.classList.remove('is-cta'));
+    });
+  }
+
+  // 2. Scroll-driven depth orbit. Release following sections only after every card fades.
+  const fragmentsViewport = document.getElementById('fragmentsViewport');
+  const fragments = Array.from(document.querySelectorAll('.hero-fragment'));
+  const heroSection = document.getElementById('home');
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const stage = document.createElement('div');
+  stage.className = 'hero-scroll-stage';
+  heroSection.removeAttribute('id');
+  stage.id = 'home';
+  heroSection.before(stage);
+  stage.append(heroSection);
+  const following = Array.from(document.querySelectorAll('body > section, body > footer'));
+  let travel = 1, stageTop = 0, smoothProgress = 0, lastTime = 0;
+  let startedAt = null;
+  const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
+  const ease = v => v * v * (3 - 2 * v);
+  function measureHero() {
+    travel = motionPreference.matches ? 180 : Math.max(1600, window.innerHeight * 2.5);
+    stage.style.height = `${heroSection.offsetHeight + travel + 120}px`;
+    stageTop = stage.getBoundingClientRect().top + window.scrollY;
+  }
+  let previousGate;
+  function gateContent(hidden) {
+    if (hidden === previousGate) return;
+    previousGate = hidden;
+    following.forEach(el => {
+      el.classList.toggle('awaiting-hero', hidden);
+      el.inert = hidden;
+    });
+  }
+  // Fixed, art-directed scatter: no random jumps on resize or reverse scroll.
+  const layout = [
+    [-164,.91,-.27,.83,-12],[-128,.72,-.69,.65,7],[-83,.94,-.79,.76,-5],
+    [-39,.82,-.56,.90,11],[4,1.00,-.12,.71,-8],[44,.77,.46,.92,6],
+    [81,.97,.76,.74,-10],[116,.65,.38,.61,9],[148,.89,.62,.87,-4],
+    [187,.74,.04,.66,12],[224,.96,-.49,.73,-7],[291,.57,.13,.58,5]
+  ];
+  fragments.forEach((fragment,i) => {
+    fragment.setAttribute('role','button');
+    fragment.tabIndex = 0;
+    fragment.setAttribute('aria-label', `Open project ${i % 8 + 1}`);
+    fragment.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault(); fragment.click();
+      }
+    });
+  });
+  function renderHero(now) {
+    if (startedAt === null) startedAt = now;
+    const dt = Math.min(64, now - (lastTime || now));
+    lastTime = now;
+    const reduced = motionPreference.matches;
+    const target = clamp((window.scrollY - stageTop) / travel);
+    smoothProgress += (target - smoothProgress) * (reduced ? 1 : 1 - Math.exp(-dt / 150));
+    if (Math.abs(target - smoothProgress) < 0.0001) smoothProgress = target;
+    const fade = ease(clamp((smoothProgress - 0.73) / 0.25));
+    const turn = reduced ? 0 : clamp(smoothProgress / 0.88) * Math.PI * 2;
+    const radiusX = Math.min(window.innerWidth * 0.46, 840);
+    const radiusY = Math.min(heroSection.offsetHeight * 0.31, 310);
+    fragments.forEach((fragment, i) => {
+      const [degrees, radius, vertical, size, tilt] = layout[i];
+      const base = degrees * Math.PI / 180;
+      const angle = base + turn;
+      const depth = Math.sin(angle);
+      const entrance = reduced ? 1 : 1 - Math.pow(1 - clamp((now - startedAt - i * 32) / 1400), 3);
+      const floatX = reduced ? 0 : Math.sin(now * 0.00038 + i * 0.83) * 4;
+      const floatY = reduced ? 0 : Math.cos(now * 0.00044 + i * 1.17) * 5;
+      const spread = 1 + fade * 0.24;
+      const x = Math.cos(angle) * radiusX * radius * spread + floatX;
+      const y = (vertical * radiusY + Math.sin(angle - base) * radiusY * (0.13 + (i % 3) * 0.06)) * spread + floatY;
+      const scale = size * (0.94 + (depth + 1) * 0.06) * (0.92 + entrance * 0.08);
+      fragment.style.opacity = String(entrance * (1 - fade) * (0.68 + (depth + 1) * 0.13));
+      fragment.style.zIndex = String(1 + i);
+      fragment.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y + (1 - entrance) * 22}px, 0) rotate(${tilt + (reduced ? 0 : Math.sin(angle) * 2)}deg) scale(${scale})`;
+
+    });
+    const hidden = fade >= 1;
+    fragmentsViewport.classList.toggle('is-hidden', hidden);
+    // No independent visibility transition: cards and next content switch in the same frame.
+    gateContent(!hidden);
+    requestAnimationFrame(renderHero);
+  }
+  measureHero();
+  // Resolve direct section links after adding the pinned hero's scroll space.
+  if (location.hash.length > 1) requestAnimationFrame(() => {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView({behavior:'instant', block:'start'});
+  });
+  gateContent(window.scrollY < stageTop + travel);
+  window.addEventListener('resize', measureHero, { passive: true });
+  motionPreference.addEventListener('change', measureHero);
+  if (document.fonts) document.fonts.ready.then(measureHero);
+  requestAnimationFrame(renderHero);
+
+  // 3. TOP SECTION INDICATOR (SCROLL SPY)
+  const trackedSections = document.querySelectorAll('.hero-scroll-stage, section[id]');
+  const navLinks = document.querySelectorAll('.nav-link-item');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          if (link.getAttribute('data-section') === id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-25% 0px -50% 0px' });
+
+  trackedSections.forEach(sec => navObserver.observe(sec));
+
+  // 4. PROJECT CASE STUDIES DATA (8 PROJECTS, 10 THUMBNAILS EACH)
+  const projects = [
+    {
+      index: "01 / 08",
+      title: "I Spent 50 Hours In A Supermax Cell",
+      category: "CHALLENGE · HIGH STAKES",
+      service: "Single Thumbnail + A/B Testing",
+      year: "2026",
+      desc: "Engineered for claustrophobic tension with isolated rim lighting and direct pupil focal lock. Tested across 12 competitor feeds, yielding a +21.2% click-through rate lift.",
+      metrics: [
+        "Focal Lock: Direct emotional gaze anchoring the primary third",
+        "Feed Legibility: Certified at 120px mobile scale under dark & light modes",
+        "Performance: +21.2% CTR lift over channel 90-day baseline"
+      ],
+      gradient: "linear-gradient(135deg, #261720 0%, #0e090d 100%)",
+      thumbs: [
+        { name: "01 · Master Final Upload", hook: "Intense Face + Bars Close-up", bg: "linear-gradient(135deg, #261720, #0e090d)" },
+        { name: "02 · A/B Variant: Cold Blue", hook: "Cold Steel Palette Test", bg: "linear-gradient(135deg, #121c24, #080d12)" },
+        { name: "03 · Guard Tower Isolation", hook: "CCTV Security Angle", bg: "linear-gradient(135deg, #1c1424, #0a0812)" },
+        { name: "04 · 120px Mobile Screen Pass", hook: "Small-Screen Contrast Pass", bg: "linear-gradient(135deg, #241414, #0f0808)" },
+        { name: "05 · Extreme Pupil Lock", hook: "Direct Viewer Eye Contact", bg: "linear-gradient(135deg, #1a2216, #090f08)" },
+        { name: "06 · Concrete Texture Macro", hook: "Physical Isolation Atmosphere", bg: "linear-gradient(135deg, #2b2210, #130f06)" },
+        { name: "07 · Infrared Surveillance Cam", hook: "Monochromatic Night Vision", bg: "linear-gradient(135deg, #0e2417, #06120b)" },
+        { name: "08 · Alternate Title Pairing", hook: "Optimized for '50 HOURS IN CELL'", bg: "linear-gradient(135deg, #251221, #0f070e)" },
+        { name: "09 · Split Time Comparison", hook: "Hour 01 vs Hour 50 Fatigue", bg: "linear-gradient(135deg, #1b1b22, #0d0d12)" },
+        { name: "10 · Raw Plate vs Final Grade", hook: "Production Layer Grading", bg: "linear-gradient(135deg, #201a14, #100c0a)" }
+      ]
+    },
+    {
+      index: "02 / 08",
+      title: "Pro 2v2 Championship Finals",
+      category: "GAMING & ESPORTS",
+      service: "Thumbnail Pack",
+      year: "2026",
+      desc: "High-contrast 3D character extraction, clean weapon silhouette separation, and tournament tension designed for Battle Royale esports feeds.",
+      metrics: [
+        "Silhouette Craft: Clean 3D player extraction with neon rim lights",
+        "Color Discipline: Zero muddy midtones to stand out on dark mobile feeds",
+        "Performance: +18.4% CTR lift across tournament series"
+      ],
+      gradient: "linear-gradient(135deg, #14202b 0%, #0d1217 100%)",
+      thumbs: [
+        { name: "01 · Championship Win Render", hook: "3D Duo Model Silhouette", bg: "linear-gradient(135deg, #14202b, #0d1217)" },
+        { name: "02 · Trophy Golden Hour", hook: "Victory & Wealth Lighting", bg: "linear-gradient(135deg, #292410, #120f06)" },
+        { name: "03 · Red Storm Overtime", hook: "High Tension Final Circle", bg: "linear-gradient(135deg, #281414, #120808)" },
+        { name: "04 · Mythic Weapon Flare", hook: "Golden Weapon Focal Point", bg: "linear-gradient(135deg, #122421, #061210)" },
+        { name: "05 · Pro Facecam Clutch", hook: "Extreme Clutch Expression", bg: "linear-gradient(135deg, #201428, #0d0714)" },
+        { name: "06 · 30-Kill Counter Hook", hook: "High Kill Game Story", bg: "linear-gradient(135deg, #241812, #100b07)" },
+        { name: "07 · Dark Mode Feed Pass", hook: "Mobile Feed Dark Theme Test", bg: "linear-gradient(135deg, #111b24, #080d12)" },
+        { name: "08 · Rival Duo Split Stare", hook: "Split Red vs Blue Composition", bg: "linear-gradient(135deg, #1f1424, #0c0812)" },
+        { name: "09 · Clean Silhouette Minimap", hook: "Zero Clutter Esports Concept", bg: "linear-gradient(135deg, #16241a, #08120b)" },
+        { name: "10 · 120px Screen Verification", hook: "Verified Small-Screen Read", bg: "linear-gradient(135deg, #1f1b24, #0e0a12)" }
+      ]
+    },
+    {
+      index: "03 / 08",
+      title: "Digital Exposé: Dark Side Of Influencers",
+      category: "DOCUMENTARY / ESSAY",
+      service: "Single Thumbnail",
+      year: "2026",
+      desc: "Documentary-grade intrigue with subtle evidence overlays, low-key lighting, and zero clickbait tropes, earning genuine curiosity clicks.",
+      metrics: [
+        "Art Direction: Editorial noir lighting with forensic dossier overlays",
+        "Psychology: Curiosity gap triggered without looking sensationalist",
+        "Performance: +16.9% CTR lift on longform 45-minute video essay"
+      ],
+      gradient: "linear-gradient(135deg, #2b1720 0%, #140d12 100%)",
+      thumbs: [
+        { name: "01 · The Redacted Dossier", hook: "Classified Document Aesthetic", bg: "linear-gradient(135deg, #2b1720, #140d12)" },
+        { name: "02 · Low-Key Noir Portrait", hook: "Single Shaft Studio Lighting", bg: "linear-gradient(135deg, #18181f, #0a0a0f)" },
+        { name: "03 · Shattered Phone Screen", hook: "Broken Reputation Metaphor", bg: "linear-gradient(135deg, #142028, #080e12)" },
+        { name: "04 · Golden Statue Crumbling", hook: "Ego & Downfall Metaphor", bg: "linear-gradient(135deg, #252010, #100d05)" },
+        { name: "05 · Courtroom Tape Stamp", hook: "Legal Reality Verification", bg: "linear-gradient(135deg, #281414, #120808)" },
+        { name: "06 · Follower Count Plunge", hook: "Graphic Data Storytelling", bg: "linear-gradient(135deg, #1f1428, #0c0714)" },
+        { name: "07 · The Empty Penthouse", hook: "Luxury Isolation Angle", bg: "linear-gradient(135deg, #14261f, #07130e)" },
+        { name: "08 · Secret Whistleblower", hook: "Silhouetted Identity Hook", bg: "linear-gradient(135deg, #221a14, #0f0a06)" },
+        { name: "09 · 120px Mobile Squint Benchmark", hook: "Editorial Feed Clarity Test", bg: "linear-gradient(135deg, #191922, #0a0a10)" },
+        { name: "10 · High-Contrast Master", hook: "Approved Production Master", bg: "linear-gradient(135deg, #281720, #12090e)" }
+      ]
+    },
+    {
+      index: "04 / 08",
+      title: "SWAT Tactical Midnight Bodycam",
+      category: "GAMING / BODYCAM",
+      service: "Thumbnail Pack",
+      year: "2026",
+      desc: "Fisheye optical curvature, authentic HUD military camera timestamps, and jump-scare storytelling calibrated for simulation feeds.",
+      metrics: [
+        "Camera Mechanics: Fisheye optical distortion and authentic HUD font",
+        "Lighting: Infrared flashlight illumination creating immediate panic",
+        "Performance: +19.7% CTR lift and 2.4x channel average viewership"
+      ],
+      gradient: "linear-gradient(135deg, #1b281f 0%, #0d1410 100%)",
+      thumbs: [
+        { name: "01 · Fisheye Corner Breach", hook: "Doorway Creature Hook", bg: "linear-gradient(135deg, #1b281f, #0d1410)" },
+        { name: "02 · Infrared Weapon Flare", hook: "Direct Weapon Flash Lighting", bg: "linear-gradient(135deg, #152220, #081210)" },
+        { name: "03 · 03:42 AM HUD Timestamp", hook: "Law Enforcement Bodycam", bg: "linear-gradient(135deg, #1a1a24, #090912)" },
+        { name: "04 · Silhouette In Window", hook: "Micro Horror Discovery", bg: "linear-gradient(135deg, #221714, #100907)" },
+        { name: "05 · Glitch Compression", hook: "Artifact Distortion Hook", bg: "linear-gradient(135deg, #241424, #100710)" },
+        { name: "06 · Hallway Smoke Mist", hook: "Volumetric Shadow Lighting", bg: "linear-gradient(135deg, #13241b, #07120c)" },
+        { name: "07 · Heart Rate 180 BPM", hook: "Officer Panic Indicator", bg: "linear-gradient(135deg, #261414, #110707)" },
+        { name: "08 · Concrete Texture Floor", hook: "Ground Depth of Field", bg: "linear-gradient(135deg, #1c2016, #0d1008)" },
+        { name: "09 · 120px Mobile Pass", hook: "Instant Horror Read", bg: "linear-gradient(135deg, #171f24, #090e12)" },
+        { name: "10 · Approved Viral Master", hook: "+19.7% CTR Final Delivery", bg: "linear-gradient(135deg, #1a251e, #0b120d)" }
+      ]
+    },
+    {
+      index: "05 / 08",
+      title: "$1 vs $100,000 Island Vacation",
+      category: "CHALLENGE / CONTRAST",
+      service: "Single Thumbnail",
+      year: "2026",
+      desc: "Instant 50/50 visual juxtaposition that communicates wealth contrast in under 0.2 seconds on mobile feeds.",
+      metrics: [
+        "Composition: Razor-sharp center split dividing poverty vs luxury",
+        "Color Separation: Dirty mud-brown left vs warm golden-cyan right",
+        "Performance: +22.5% CTR lift and 4.2M views in first 7 days"
+      ],
+      gradient: "linear-gradient(135deg, #2a2414 0%, #141108 100%)",
+      thumbs: [
+        { name: "01 · 50/50 Dirt vs Gold Split", hook: "Ultra Contrast in 0.2s", bg: "linear-gradient(135deg, #2a2414, #141108)" },
+        { name: "02 · Wooden Raft vs Superyacht", hook: "Extreme Scale Disparity", bg: "linear-gradient(135deg, #142028, #081014)" },
+        { name: "03 · Rainstorm vs Golden Sunset", hook: "Weather Division", bg: "linear-gradient(135deg, #241620, #10080d)" },
+        { name: "04 · Canned Beans vs Caviar Plate", hook: "Food Value Perception", bg: "linear-gradient(135deg, #202414, #0d1008)" },
+        { name: "05 · Island Aerial Perspective", hook: "Deserted Sandbar vs Resort", bg: "linear-gradient(135deg, #142422, #071210)" },
+        { name: "06 · Hypothermic vs Sunburned", hook: "Dual Facial Reaction", bg: "linear-gradient(135deg, #281814, #120907)" },
+        { name: "07 · $1.00 vs $100,000 Price Stamp", hook: "Numerical Contrast Hook", bg: "linear-gradient(135deg, #1a1524, #0a0712)" },
+        { name: "08 · Campfire vs Villa Chandelier", hook: "Luminance Contrast", bg: "linear-gradient(135deg, #242214, #100f07)" },
+        { name: "09 · 120px Squint Benchmark", hook: "Zero Confusion on Mobile", bg: "linear-gradient(135deg, #1e1925, #0c0912)" },
+        { name: "10 · Master Channel Record", hook: "+22.5% CTR Delivery", bg: "linear-gradient(135deg, #282214, #120f07)" }
+      ]
+    },
+    {
+      index: "06 / 08",
+      title: "The Podcast That Broke The Internet",
+      category: "PODCAST / TALK SHOW",
+      service: "Monthly Retainer",
+      year: "2026",
+      desc: "Micro-expression retouching, studio microphone depth, and face-centric curiosity calibrated for talk show feeds.",
+      metrics: [
+        "Facial Retouching: Subtle micro-expression enhancement with zero plastic look",
+        "Studio Depth: Calibrated background bokeh matching Shure microphone focal plane",
+        "Performance: +17.3% CTR lift and recurring visual language retention"
+      ],
+      gradient: "linear-gradient(135deg, #24142a 0%, #120a15 100%)",
+      thumbs: [
+        { name: "01 · Shocked Reaction Cutout", hook: "Micro-Expression Retouched", bg: "linear-gradient(135deg, #24142a, #120a15)" },
+        { name: "02 · Studio Warm Rim Lighting", hook: "High End Talk Ambiance", bg: "linear-gradient(135deg, #241e14, #120d08)" },
+        { name: "03 · Shure SM7B Mic Silhouette", hook: "Authority Anchor", bg: "linear-gradient(135deg, #141c24, #080d12)" },
+        { name: "04 · Head in Hands Emotion", hook: "Regret & Revelation Hook", bg: "linear-gradient(135deg, #261418, #11070a)" },
+        { name: "05 · Dual Host vs Guest Stare", hook: "High Tension Conversation", bg: "linear-gradient(135deg, #182414, #091207)" },
+        { name: "06 · Unreleased Clip Border", hook: "Exclusive Leak Angle", bg: "linear-gradient(135deg, #1d1428, #0b0712)" },
+        { name: "07 · Studio Foam Backdrop", hook: "Authentic Production Environment", bg: "linear-gradient(135deg, #142421, #071210)" },
+        { name: "08 · Quote Teaser Hook", hook: "'I Regret Everything'", bg: "linear-gradient(135deg, #242416, #101007)" },
+        { name: "09 · 120px Small-Screen Pass", hook: "Face Retains High Contrast", bg: "linear-gradient(135deg, #1e1724, #0c0812)" },
+        { name: "10 · Final Production Deliverable", hook: "Multi-Million Impression Win", bg: "linear-gradient(135deg, #24152a, #100914)" }
+      ]
+    },
+    {
+      index: "07 / 08",
+      title: "Building An 8-Bit CPU In Minecraft",
+      category: "GAMING / SANDBOX",
+      service: "Single Thumbnail",
+      year: "2026",
+      desc: "Monumental isometric scale, redstone circuit glow, and unbelievable architectural scale communicating complexity.",
+      metrics: [
+        "Isometric Scale: Vast depth-of-field illustrating 400,000 redstone blocks",
+        "Illumination: Custom glow grading on repeater logic lines",
+        "Performance: +15.8% CTR lift in technical gaming vertical"
+      ],
+      gradient: "linear-gradient(135deg, #15272a 0%, #0a1315 100%)",
+      thumbs: [
+        { name: "01 · Epic Redstone Mega Circuit", hook: "Massive Architectural Scale", bg: "linear-gradient(135deg, #15272a, #0a1315)" },
+        { name: "02 · Screen Rendering In-Game", hook: "Playable Pong on Giant Screen", bg: "linear-gradient(135deg, #142216, #071208)" },
+        { name: "03 · Sunset Isometric Depth", hook: "Golden Angle Architecture", bg: "linear-gradient(135deg, #252014, #120e07)" },
+        { name: "04 · 8-Bit CPU Logic Gates", hook: "Technical Wonder Hook", bg: "linear-gradient(135deg, #24141d, #12080d)" },
+        { name: "05 · Player Floating in Vast Void", hook: "Scale Comparison Hook", bg: "linear-gradient(135deg, #141824, #080a12)" },
+        { name: "06 · Neon Repeater Lines", hook: "High Contrast Neon Circuits", bg: "linear-gradient(135deg, #261614, #120907)" },
+        { name: "07 · 'IT ACTUALLY BOOTS' Label", hook: "Curiosity Premise Hook", bg: "linear-gradient(135deg, #1e1426, #0c0712)" },
+        { name: "08 · Night Horizon Lighting", hook: "Ultra Clean Lighting Separation", bg: "linear-gradient(135deg, #142422, #071210)" },
+        { name: "09 · 120px Squint Benchmark", hook: "Readable Micro Architecture", bg: "linear-gradient(135deg, #152528, #091214)" },
+        { name: "10 · Master Upload Asset", hook: "+15.8% CTR Channel Record", bg: "linear-gradient(135deg, #142728, #081415)" }
+      ]
+    },
+    {
+      index: "08 / 08",
+      title: "Fixing Your Broken Attention Span",
+      category: "ESSAY / PSYCHOLOGY",
+      service: "Single Thumbnail",
+      year: "2026",
+      desc: "Ruthless minimalist metaphor with zero clutter, commanding attention in academic and educational feeds.",
+      metrics: [
+        "Radical Minimalism: Single stark metaphor without unnecessary floating icons",
+        "Color Palette: Deep monochrome with singular laser focus beam",
+        "Performance: +20.1% CTR lift on self-improvement audience"
+      ],
+      gradient: "linear-gradient(135deg, #2a1515 0%, #140a0a 100%)",
+      thumbs: [
+        { name: "01 · Monochromatic Burnout", hook: "Ruthless Minimalist Metaphor", bg: "linear-gradient(135deg, #2a1515, #140a0a)" },
+        { name: "02 · 10h Dopamine Detox Timer", hook: "Time Pressure Curiosity", bg: "linear-gradient(135deg, #161a24, #080a12)" },
+        { name: "03 · Golden Laser Focus Beam", hook: "Laser Clarity vs Chaos", bg: "linear-gradient(135deg, #242214, #111006)" },
+        { name: "04 · Phone Locked in Safe", hook: "Extreme Self-Control Hook", bg: "linear-gradient(135deg, #14241e, #07120e)" },
+        { name: "05 · Neuroscience Neuron Reset", hook: "Scientific Authority Angle", bg: "linear-gradient(135deg, #241424, #100710)" },
+        { name: "06 · Blank Journal Dark Room", hook: "Deep Work Focus Aesthetic", bg: "linear-gradient(135deg, #161e24, #080e12)" },
+        { name: "07 · Notification Chaos", hook: "Relatable Pain Point Hook", bg: "linear-gradient(135deg, #241814, #100906)" },
+        { name: "08 · Single White Dot in Void", hook: "Ultra Radical Minimalism", bg: "linear-gradient(135deg, #15151b, #09090d)" },
+        { name: "09 · 120px Small-Screen Pass", hook: "Dominates Educational Feeds", bg: "linear-gradient(135deg, #261616, #120808)" },
+        { name: "10 · Approved Master Packaging", hook: "+20.1% CTR Longform Winner", bg: "linear-gradient(135deg, #281414, #120707)" }
+      ]
+    }
+  ];
+
+  // 5. PROJECT VIEW OVERLAY LOGIC
+  const overlay = document.getElementById('projectOverlay');
+  const closeBtn = document.getElementById('overlayCloseBtn');
+  const oIndex = document.getElementById('overlayIndex');
+  const oBannerBg = document.getElementById('overlayBannerBg');
+  const oContext = document.getElementById('overlayContext');
+  const oMetrics = document.getElementById('overlayMetrics');
+  const oBriefBtn = document.getElementById('overlayBriefBtn');
+  const prevProjBtn = document.getElementById('prevProjectBtn');
+  const nextProjBtn = document.getElementById('nextProjectBtn');
+
+  // Carousel inside overlay
+  const itCount = document.getElementById('iterationsCount');
+  const itCanvasBg = document.getElementById('itCanvasBg');
+  const itStrip = document.getElementById('iterationsStrip');
+  const itPrev = document.getElementById('itPrevBtn');
+  const itNext = document.getElementById('itNextBtn');
+
+  let activePIndex = 0;
+  let activeSlide = 0;
+
+  window.openProjectModal = function(idx) {
+    activePIndex = idx;
+    activeSlide = 0;
+    const p = projects[idx];
+
+    oIndex.textContent = `PROJECT ${p.index}`;
+    oBannerBg.style.background = p.gradient;
+    oContext.textContent = p.desc;
+    oBriefBtn.setAttribute('data-scope', p.service);
+
+    oMetrics.innerHTML = p.metrics.map(m => {
+      const parts = m.split(': ');
+      return `<li><strong>${parts[0]}:</strong> ${parts[1] || ''}</li>`;
+    }).join('');
+
+    renderIterationsStrip(p.thumbs);
+    loadIterationSlide(0);
+
+    overlay.scrollTop = 0;
+    overlay.classList.add('is-active');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function renderIterationsStrip(thumbs) {
+    itStrip.innerHTML = '';
+    thumbs.forEach((t, i) => {
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'it-mini-item' + (i === 0 ? ' active' : '');
+      item.style.background = t.bg;
+      item.setAttribute('aria-label', `View image ${i + 1}`);
+      item.onclick = () => loadIterationSlide(i);
+      itStrip.appendChild(item);
+    });
+  }
+
+  function loadIterationSlide(i) {
+    activeSlide = i;
+    const p = projects[activePIndex];
+    const t = p.thumbs[i];
+
+    itCanvasBg.style.background = t.bg;
+    itCount.textContent = `${i + 1 < 10 ? '0' : ''}${i + 1} / 10`;
+
+    const items = itStrip.querySelectorAll('.it-mini-item');
+    items.forEach((it, idx) => {
+      if (idx === i) {
+        it.classList.add('active');
+        itStrip.scrollTo({ left: it.offsetLeft - itStrip.offsetLeft - (itStrip.clientWidth - it.clientWidth) / 2, behavior: motionPreference.matches ? 'auto' : 'smooth' });
+      } else {
+        it.classList.remove('active');
+      }
+    });
+  }
+
+  itPrev.onclick = () => {
+    const p = projects[activePIndex];
+    activeSlide = (activeSlide - 1 + p.thumbs.length) % p.thumbs.length;
+    loadIterationSlide(activeSlide);
+  };
+
+  itNext.onclick = () => {
+    const p = projects[activePIndex];
+    activeSlide = (activeSlide + 1) % p.thumbs.length;
+    loadIterationSlide(activeSlide);
+  };
+
+  closeBtn.onclick = closeOverlayModal;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeOverlayModal();
+  });
+
+  function closeOverlayModal() {
+    overlay.classList.remove('is-active');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  prevProjBtn.onclick = () => {
+    const prev = (activePIndex - 1 + projects.length) % projects.length;
+    openProjectModal(prev);
+  };
+
+  nextProjBtn.onclick = () => {
+    const next = (activePIndex + 1) % projects.length;
+    openProjectModal(next);
+  };
+
+  document.querySelectorAll('.work-entry-card, .service-entry-row').forEach((el, i) => {
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    if (el.classList.contains('work-entry-card')) el.setAttribute('aria-label', `Open project ${i + 1}`);
+    el.addEventListener('keydown', e => {
+      if (e.target === el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); el.click(); }
+    });
+  });
+
+  // 6. BRIEF MODAL & EMAIL GENERATION
+  const briefModal = document.getElementById('briefModalOverlay');
+  const closeBriefBtn = document.getElementById('closeBriefModalBtn');
+  const scopeSelect = document.getElementById('bmScope');
+  const briefForm = document.getElementById('editorialBriefForm');
+
+  document.querySelectorAll('.trigger-brief').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const s = btn.getAttribute('data-scope') || 'Single Thumbnail ($60)';
+
+      let matched = false;
+      for (let opt of scopeSelect.options) {
+        if (opt.value === s || opt.value.includes(s)) {
+          scopeSelect.value = opt.value;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) scopeSelect.value = "Direct Inquiry";
+
+      closeOverlayModal();
+      briefModal.classList.add('is-active');
+      briefModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBriefBtn.onclick = () => {
+    briefModal.classList.remove('is-active');
+    briefModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  briefModal.addEventListener('click', (e) => {
+    if (e.target === briefModal) {
+      briefModal.classList.remove('is-active');
+      briefModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  });
+
+  briefForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('bmName').value;
+    const email = document.getElementById('bmEmail').value;
+    const channel = document.getElementById('bmChannel').value;
+    const link = document.getElementById('bmLink').value;
+    const pkg = scopeSelect.value;
+    const deadline = document.getElementById('bmDeadline').value;
+    const details = document.getElementById('bmDetails').value;
+    const notes = document.getElementById('bmNotes').value;
+
+    const emailSubject = `[Project Brief] ${pkg} — ${name} (${channel})`;
+    const emailBody = `MOHAMED SEIF — PRODUCTION INTAKE BRIEF\n\n` +
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `YouTube Channel: ${channel}\n` +
+      `Reference Video: ${link || 'N/A'}\n` +
+      `Selected Scope: ${pkg}\n` +
+      `Target Deadline: ${deadline || 'Flexible'}\n\n` +
+      `Project Premise & Details:\n${details}\n\n` +
+      `Additional Notes:\n${notes || 'None'}\n`;
+
+    window.location.href = `mailto:mhmd828827@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    alert(`Thank you, ${name}! Your brief has been formatted. Opening your email client to send.`);
+    briefModal.classList.remove('is-active');
+    document.body.style.overflow = '';
+    briefForm.reset();
+  });
+
+  // Global ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeOverlayModal();
+      briefModal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  const dialogs = [overlay, briefModal];
+  let returnFocus = null;
+  let activeDialog = null;
+  const focusables = el => Array.from(el.querySelectorAll('button, a[href], input, select, textarea, [tabindex="0"]')).filter(e => !e.disabled && e.getClientRects().length);
+  dialogs.forEach((dialog, i) => {
+    dialog.setAttribute('role','dialog');
+    dialog.setAttribute('aria-modal','true');
+    dialog.setAttribute('aria-label', i ? 'Project brief' : 'Project images');
+    dialog.inert = true;
+    new MutationObserver(() => {
+      const isOpen = dialog.classList.contains('is-active');
+      dialog.inert = !isOpen;
+      dialog.setAttribute('aria-hidden', String(!isOpen));
+      if (isOpen && activeDialog !== dialog) {
+        if (!activeDialog) returnFocus = document.activeElement;
+        activeDialog = dialog;
+        requestAnimationFrame(() => (i ? closeBriefBtn : closeBtn).focus({preventScroll:true}));
+      } else if (!isOpen && activeDialog === dialog) {
+        activeDialog = null;
+        if (!dialogs.some(d => d.classList.contains('is-active'))) returnFocus?.focus({preventScroll:true});
+      }
+    }).observe(dialog, {attributes:true,attributeFilter:['class']});
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Tab' || !activeDialog) return;
+    const items = focusables(activeDialog);
+    const first = items[0], last = items[items.length-1];
+    if (!activeDialog.contains(document.activeElement)) {e.preventDefault();first.focus();}
+    else if (e.shiftKey && document.activeElement === first) {e.preventDefault();last.focus();}
+    else if (!e.shiftKey && document.activeElement === last) {e.preventDefault();first.focus();}
+  });
+
+});
+</script>
+
+</body>
+</html>
