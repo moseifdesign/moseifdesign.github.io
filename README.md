@@ -1,9 +1,9 @@
-# Mohamed Seif Portfolio — V25
+# Mohamed Seif Portfolio — V27
 
-Website: https://moseifdesign.github.io/
+Open index.html beside the four WebP files. Modular source is also included.
 
-Open `index.html` alongside the four `.webp` artwork files. CSS and JavaScript are included in this HTML file. The modular source is included in the V25 ZIP, with `index_modular.html`, `css/style.css` and `js/main.js`.
+V27 increases floating thumbnails by 12%, tracks scroll input directly from page origin, and introduces the custom moseif wordmark with a matching favicon.
 
-V25 adds a custom Seif wordmark, four supplied thumbnails in the floating cards and first four projects, an explicitly optional video link, and a minimal footer. The other four project slots remain placeholders.
+The brief prepares matching WhatsApp and email messages. The visitor must confirm sending in BOTH apps for both channels to receive a copy. This is not automatic delivery and does not verify receipt. No backend or third-party form service receives the form data. Email requires a configured mail app; a copy-message fallback is provided. Video reference remains optional.
 
-The brief opens an email draft with `mailto:` and requires a configured email application. Fonts have system fallbacks.
+Logo research: https://www.alikzehtab.com/ ; https://www.jourdanhinkle.design/work/personal-rebrand ; https://www.matt-kenney.com/work/mkdc . No reference assets copied.
