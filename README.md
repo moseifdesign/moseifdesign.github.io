@@ -9,3 +9,5 @@ The brief prepares matching WhatsApp and email messages. The visitor must confir
 Logo research: https://www.alikzehtab.com/ ; https://www.jourdanhinkle.design/work/personal-rebrand ; https://www.matt-kenney.com/work/mkdc . No reference assets copied.
 
 V28 replaces the visible name and S symbol with a standalone M tile, including the favicon. Idle drift increases from 4/5px to 7/8px and is about 25% faster. Scroll-driven orbit and reduced-motion behavior are unchanged.
+
+V29: Floating artwork width 286px desktop / 184px mobile; hero label Mohamed Seif · Thumbnail Designer; Scroll to explore cue.
