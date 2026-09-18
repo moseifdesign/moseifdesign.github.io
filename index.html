@@ -1502,6 +1502,9 @@ textarea.bm-input {
 .hero-scroll-cue { position:absolute; bottom:108px; left:50%; transform:translateX(-50%); z-index:11; display:flex; align-items:center; gap:12px; color:var(--text-muted, #999); font-size:9px; font-weight:500; letter-spacing:3px; text-transform:uppercase; white-space:nowrap; pointer-events:none; }
 .hero-scroll-cue span { width:36px; height:1px; background:currentColor; opacity:.5; }
 @media(max-width:768px) { .hero-fragment { width:184px; } .hero-scroll-cue { bottom:100px; font-size:8px; letter-spacing:2px; } }
+
+/* V30: hold the composition below the nav throughout the introduction. */
+.hero-scroll-stage .hero-section { top:var(--hero-top, 80px); }
 </style>
   
   
@@ -2161,12 +2164,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const following = Array.from(document.querySelectorAll('body > section, body > footer'));
   let travel = 1, stageTop = 0, smoothProgress = 0, lastTime = 0;
   let startedAt = null;
+  let introReleased = window.scrollY > 0, pendingSection = null;
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const ease = v => v * v * (3 - 2 * v);
   function measureHero() {
-    travel = motionPreference.matches ? 180 : Math.max(1600, window.innerHeight * 2.5);
+    travel = motionPreference.matches ? 180 : Math.max(1900, window.innerHeight * 2.9);
     stage.style.height = `${heroSection.offsetHeight + travel + 120}px`;
     stageTop = 0;
+    stage.style.setProperty('--hero-top', `${document.getElementById('topNav').offsetHeight}px`);
   }
   let previousGate;
   function gateContent(hidden) {
@@ -2196,14 +2201,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   function renderHero(now) {
     if (startedAt === null) startedAt = now;
-    const dt = Math.min(64, now - (lastTime || now));
+    const dt = Math.min(1000, now - (lastTime || now));
     lastTime = now;
     const reduced = motionPreference.matches;
     const target = clamp((window.scrollY - stageTop) / travel);
-    smoothProgress = target;
-    if (Math.abs(target - smoothProgress) < 0.0001) smoothProgress = target;
-    const fade = ease(clamp((smoothProgress - 0.73) / 0.25));
-    const turn = reduced ? 0 : clamp(smoothProgress / 0.88) * Math.PI * 2;
+    // Immediate response, with capped travel and a soft settling tail.
+    if (reduced || (introReleased && window.scrollY >= travel)) smoothProgress = target;
+    else {
+      const difference = target - smoothProgress;
+      const step = difference * (1 - Math.exp(-dt / 140));
+      smoothProgress += Math.sign(step) * Math.min(Math.abs(step), dt / 4200);
+      if (Math.abs(target - smoothProgress) < 0.001) smoothProgress = target;
+    }
+    const fade = ease(clamp((smoothProgress - 0.64) / 0.34));
+    const turn = reduced ? 0 : ease(clamp(smoothProgress / 0.98)) * Math.PI * 1.35;
     const radiusX = Math.min(window.innerWidth * 0.46, 840);
     const radiusY = Math.min(heroSection.offsetHeight * 0.31, 310);
     fragments.forEach((fragment, i) => {
@@ -2211,10 +2222,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const base = degrees * Math.PI / 180;
       const angle = base + turn;
       const depth = Math.sin(angle);
-      const entrance = (reduced || window.scrollY > 0) ? 1 : 1 - Math.pow(1 - clamp((now - startedAt - i * 32) / 1400), 3);
-      const floatX = reduced ? 0 : Math.sin(now * 0.00048 + i * 0.83) * 7;
-      const floatY = reduced ? 0 : Math.cos(now * 0.00055 + i * 1.17) * 8;
-      const spread = 1 + fade * 0.24;
+      const entrance = (reduced || window.scrollY > 0) ? 1 : 1 - Math.pow(1 - clamp((now - startedAt - i * 32) / 1800), 3);
+      const floatX = reduced ? 0 : Math.sin(now * 0.00034 + i * 0.83) * 7;
+      const floatY = reduced ? 0 : Math.cos(now * 0.00039 + i * 1.17) * 8;
+      const spread = 1 + fade * 0.16;
       const x = Math.cos(angle) * radiusX * radius * spread + floatX;
       const y = (vertical * radiusY + Math.sin(angle - base) * radiusY * (0.13 + (i % 3) * 0.06)) * spread + floatY;
       const scale = size * (0.94 + (depth + 1) * 0.06) * (0.92 + entrance * 0.08);
@@ -2227,13 +2238,38 @@ document.addEventListener('DOMContentLoaded', () => {
     fragmentsViewport.classList.toggle('is-hidden', hidden);
     // No independent visibility transition: cards and next content switch in the same frame.
     gateContent(!hidden);
+    const cue = heroSection.querySelector('.hero-scroll-cue');
+    if (cue) cue.style.opacity = String(1 - ease(clamp(smoothProgress / 0.15)));
+    if (hidden) {
+      introReleased = true;
+      if (pendingSection) {
+        const destination = pendingSection;
+        pendingSection = null;
+        destination.scrollIntoView({behavior: reduced ? 'instant' : 'smooth', block:'start'});
+      }
+    }
     requestAnimationFrame(renderHero);
   }
+  function holdIntro() {
+    if (window.scrollY < travel * 0.95) introReleased = false;
+    // Bound scrollbar, keyboard, touch and fast-wheel jumps to the pinned stage.
+    if (!introReleased && window.scrollY > travel) window.scrollTo({top:travel, behavior:'instant'});
+  }
+  window.addEventListener('scroll', holdIntro, {passive:true});
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const destination = document.getElementById(link.getAttribute('href').slice(1));
+      if (!destination || destination === stage || introReleased || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      event.preventDefault();
+      pendingSection = destination;
+      window.scrollTo({top:travel, behavior:'instant'});
+    });
+  });
   measureHero();
   // Resolve direct section links after adding the pinned hero's scroll space.
   if (location.hash.length > 1) requestAnimationFrame(() => {
     const target = document.getElementById(location.hash.slice(1));
-    if (target) target.scrollIntoView({behavior:'instant', block:'start'});
+    if (target && target !== stage) {introReleased = true; smoothProgress = 1; gateContent(false); target.scrollIntoView({behavior:'instant', block:'start'});}
   });
   gateContent(window.scrollY < stageTop + travel);
   window.addEventListener('resize', measureHero, { passive: true });
