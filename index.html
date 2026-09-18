@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>moseifdesign</title>
-  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23CEFD00%22%2F%3E%3Cpath%20d%3D%22M16%2013H48V23H29L48%2038V51H16V41H35L16%2026Z%22%20fill%3D%22%2308080A%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20role%3D%22img%22%20aria-label%3D%22Mohamed%20Seif%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23CEFD00%22%2F%3E%3Cpath%20d%3D%22M13%2049V15h10l9%2015%209-15h10v34H41V33l-9%2014-9-14v16Z%22%20fill%3D%22%2308080A%22%2F%3E%3C%2Fsvg%3E">
   
   <!-- Font: Instrument Sans Only -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1491,6 +1491,11 @@ textarea.bm-input {
 .brief-delivery :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 @media(max-width:768px) { .hero-fragment { width: 168px; } }
 @media(max-width:480px) { .brand-title .seif-signature { width: 145px; height: 32px; } .brief-delivery { padding: 16px; } }
+
+/* V28: standalone M mark, retaining the existing lime tile. */
+.brand-title .seif-signature { width:40px; height:40px; }
+.f-name .seif-signature { width:36px; height:36px; }
+@media(max-width:480px) { .brand-title .seif-signature { width:36px; height:36px; } }
 </style>
   
   
@@ -1509,7 +1514,7 @@ textarea.bm-input {
   <header class="top-nav" id="topNav">
     <div class="nav-container">
       <!-- Clean Brand Name (No glowing dot) -->
-      <a href="#home" class="brand-title" aria-label="Mohamed Seif — Home"><svg class="seif-signature" viewBox="0 0 378 80" fill="none" aria-hidden="true"><g transform="translate(0 8)"><rect x="0" y="0" width="64" height="64" rx="16" fill="#CEFD00"/><path d="M16 13H48V23H29L48 38V51H16V41H35L16 26Z" fill="#08080A"/></g><g transform="translate(84 5)" fill="#F7F7F5"><path d="M0 22h11v6c3-5 8-7 14-7 7 0 12 3 15 8 4-5 9-8 16-8 12 0 18 8 18 21v27H62V43c0-8-3-12-9-12-7 0-10 5-10 13v25H31V43c0-8-3-12-9-12-7 0-10 5-10 13v25H0z"/><path fill-rule="evenodd" d="M104 20c15 0 24 10 24 25s-9 25-24 25-24-10-24-25 9-25 24-25zm0 10c-8 0-12 6-12 15s4 15 12 15 12-6 12-15-4-15-12-15z"/><path d="M169 30h-16c-4 0-6 2-6 5 0 3 2 4 6 5l9 2c9 2 13 6 13 13 0 10-7 15-19 15h-18V60h18c5 0 7-2 7-5 0-2-2-4-6-5l-9-2c-8-2-12-6-12-13 0-9 7-15 18-15h15z"/><path fill-rule="evenodd" d="M204 20c14 0 22 10 22 24v6h-33c1 7 6 11 13 11 5 0 10-2 14-5l5 8c-5 4-12 6-20 6-16 0-25-10-25-25 0-14 9-25 24-25zm0 10c-6 0-10 4-11 11h21c-1-7-4-11-10-11z"/><path d="M233 22h12v47h-12zM259 69V32h-8V22h8v-5c0-11 7-17 18-17h12v10h-10c-5 0-8 2-8 7v5h18v10h-18v37z"/><rect x="233" y="4" width="12" height="12" rx="3" fill="#CEFD00"/></g></svg></a>
+      <a href="#home" class="brand-title" aria-label="Mohamed Seif — Home"><svg class="seif-signature" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#CEFD00"/><path d="M13 49V15h10l9 15 9-15h10v34H41V33l-9 14-9-14v16Z" fill="#08080A"/></svg></a>
 
       <!-- Active Section Indicator Links at Top -->
       <nav class="nav-sections" id="navSections">
@@ -1936,7 +1941,7 @@ textarea.bm-input {
     <div class="container">
       <div class="footer-row-flex">
         <div class="footer-info">
-          <span class="f-name" aria-label="Mohamed Seif"><svg class="seif-signature" viewBox="0 0 378 80" fill="none" aria-hidden="true"><g transform="translate(0 8)"><rect x="0" y="0" width="64" height="64" rx="16" fill="#CEFD00"/><path d="M16 13H48V23H29L48 38V51H16V41H35L16 26Z" fill="#08080A"/></g><g transform="translate(84 5)" fill="#F7F7F5"><path d="M0 22h11v6c3-5 8-7 14-7 7 0 12 3 15 8 4-5 9-8 16-8 12 0 18 8 18 21v27H62V43c0-8-3-12-9-12-7 0-10 5-10 13v25H31V43c0-8-3-12-9-12-7 0-10 5-10 13v25H0z"/><path fill-rule="evenodd" d="M104 20c15 0 24 10 24 25s-9 25-24 25-24-10-24-25 9-25 24-25zm0 10c-8 0-12 6-12 15s4 15 12 15 12-6 12-15-4-15-12-15z"/><path d="M169 30h-16c-4 0-6 2-6 5 0 3 2 4 6 5l9 2c9 2 13 6 13 13 0 10-7 15-19 15h-18V60h18c5 0 7-2 7-5 0-2-2-4-6-5l-9-2c-8-2-12-6-12-13 0-9 7-15 18-15h15z"/><path fill-rule="evenodd" d="M204 20c14 0 22 10 22 24v6h-33c1 7 6 11 13 11 5 0 10-2 14-5l5 8c-5 4-12 6-20 6-16 0-25-10-25-25 0-14 9-25 24-25zm0 10c-6 0-10 4-11 11h21c-1-7-4-11-10-11z"/><path d="M233 22h12v47h-12zM259 69V32h-8V22h8v-5c0-11 7-17 18-17h12v10h-10c-5 0-8 2-8 7v5h18v10h-18v37z"/><rect x="233" y="4" width="12" height="12" rx="3" fill="#CEFD00"/></g></svg></span>
+          <span class="f-name" aria-label="Mohamed Seif"><svg class="seif-signature" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#CEFD00"/><path d="M13 49V15h10l9 15 9-15h10v34H41V33l-9 14-9-14v16Z" fill="#08080A"/></svg></span>
           <span class="f-role">Thumbnail Designer</span>
         </div>
         <div class="footer-meta">
@@ -2200,8 +2205,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const angle = base + turn;
       const depth = Math.sin(angle);
       const entrance = (reduced || window.scrollY > 0) ? 1 : 1 - Math.pow(1 - clamp((now - startedAt - i * 32) / 1400), 3);
-      const floatX = reduced ? 0 : Math.sin(now * 0.00038 + i * 0.83) * 4;
-      const floatY = reduced ? 0 : Math.cos(now * 0.00044 + i * 1.17) * 5;
+      const floatX = reduced ? 0 : Math.sin(now * 0.00048 + i * 0.83) * 7;
+      const floatY = reduced ? 0 : Math.cos(now * 0.00055 + i * 1.17) * 8;
       const spread = 1 + fade * 0.24;
       const x = Math.cos(angle) * radiusX * radius * spread + floatX;
       const y = (vertical * radiusY + Math.sin(angle - base) * radiusY * (0.13 + (i % 3) * 0.06)) * spread + floatY;
