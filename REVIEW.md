@@ -1,26 +1,9 @@
-# مراجعة V24
+# V25 review
 
-تم تطوير اللوجو إلى اسم أفقي واضح مع علامة S مستوحاة من إطار الصورة، بالأبيض والليموني. مراجع الاتجاه البصري: https://alejandrodsgn.com/ وhttps://www.kyanivisuals.com/ وhttps://www.kurehara.com/ . التصميم الجديد لا يستخدم أصول هذه المواقع.
+Changes: custom drawn lowercase Seif lettering with Mohamed above, white/lime palette; optional video-link label; reduced footer; four supplied images integrated into all twelve floating cards and first four project covers/viewers. Each populated project shows one actual image, with factual artwork descriptions instead of the old sample performance claims. Existing motion, section styling, pricing and contact details retained.
 
-## الفحوص المنفذة
-- مقاسات المتصفح: 320×568، 375×667، 390×844، 768×1024، 1024×768، 1440×900، 844×390.
-- فتح المشاريع الثمانية والتنقل في الصور العشر لكل مشروع (80 حالة)، مع الالتفاف للصورة الأولى.
-- فحص نافذة المشروع ونموذج التواصل عند المقاسات السبعة: لا تجاوز أفقي، وأزرار المشروع داخل عرض الشاشة.
-- فتح نموذج التواصل من الخدمة واختيار Thumbnail Pack تلقائيًا.
-- التنقل داخل النموذج بلوحة المفاتيح وإغلاقه بـEscape.
-- فتح رابط قسم services مباشرة والعودة إلى المقدمة.
-- فحص أخطاء JavaScript أثناء الاختبارات: لا أخطاء مسجلة.
+Visual references reviewed: https://harrycb.com/work/designer-branding/ (compact original lettering/mark); https://www.kurehara.com/ (restrained designer identity); https://www.rebeccaluffman.com/ (personal designer portfolio, assets did not fully load). No reference logo assets copied.
 
-## الإصلاحات المحدودة
-- منع زر المشروع الطويل من تجاوز شاشة الهاتف.
-- فتح المشروع من بدايته بدل القفز إلى شريط الصور.
-- تحسين التعامل مع لوحة المفاتيح وإخفاء النوافذ المغلقة عنها وربط أسماء الحقول بها.
-- ضبط عنوان المقدمة للشاشات الأصغر من 360px والمسافات في الهيدر.
-- إصلاح تموضع الروابط المباشرة بعد تجهيز مساحة الأنيميشن.
+Validation: JavaScript syntax passed; desktop and 390px/320px mobile viewport checks, no horizontal overflow in page or project modal; all four supplied images open in their matching projects; single-image counter reads 01 / 01, unavailable carousel arrows hidden; empty video input has no required constraint and existing email formatter accepts an empty value. Footer contains only identity, Thumbnail Designer and copyright. No console errors observed.
 
-ألوان الموقع ومحتوى الأقسام والأسعار وبيانات التواصل وحركة V22 محفوظة. مناطق الصور ما زالت فارغة كما طلبت.
-
-## نطاق التحقق
-الفحص داخل متصفح Chromium ومحاكاة المقاسات، وليس اختبارًا فعليًا لكل هاتف أو متصفح. Safari/iOS وFirefox لم يُختبرا على أجهزة فعلية. لم تُرسل رسائل تجريبية: زر الإرسال الحالي يفتح برنامج البريد عبر mailto، لذلك يحتاج برنامج بريد مهيأ، ولا يرسل إلى خادم من الموقع. الخط الأساسي من Google Fonts وله خطوط بديلة عند عدم الاتصال.
-
-افتح index.html للنسخة المستقلة، أو index_modular.html مع مجلدي css وjs. الملف المضغوط جاهز للنقل؛ لم يتم نشر الموقع على الإنترنت في هذه المراجعة.
+Testing used Chromium viewport emulation, not all physical devices or Safari/Firefox. The brief still opens an email client; no test email was sent. Four unfilled project slots retain their previous placeholder content. Keep the four root WebP files beside index.html when deploying.

@@ -1,16 +1,9 @@
-# Mohamed Seif Portfolio
+# Mohamed Seif Portfolio — V25
 
-Version V24 of Mohamed Seif's YouTube thumbnail design portfolio.
+Website: https://moseifdesign.github.io/
 
-## Open the website
+Open `index.html` alongside the four `.webp` artwork files. CSS and JavaScript are included in this HTML file. The modular source is included in the V25 ZIP, with `index_modular.html`, `css/style.css` and `js/main.js`.
 
-Open `index.html` in a modern browser. It is a standalone page with its CSS and JavaScript included. Google Fonts is optional; fallback fonts work offline.
+V25 adds a custom Seif wordmark, four supplied thumbnails in the floating cards and first four projects, an explicitly optional video link, and a minimal footer. The other four project slots remain placeholders.
 
-## Files
-
-- `index.html`: complete runnable website.
-- `Mohamed-Seif-mark.svg`: brand wordmark.
-- `Mohamed_Seif_Portfolio_V24.zip`: full original distribution, including modular HTML, CSS, JavaScript and review notes.
-- `REVIEW.md`: compatibility checks and known limitations.
-
-The project brief opens an email draft using `mailto:`; it requires a configured email application. Artwork spaces are intentionally empty and ready for final images.
+The brief opens an email draft with `mailto:` and requires a configured email application. Fonts have system fallbacks.

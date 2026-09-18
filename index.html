@@ -1464,6 +1464,16 @@ textarea.bm-input {
 @media(max-width:360px) {
   .hero-main-statement { font-size: 2.6rem; }
 }
+
+/* V25: custom drawn wordmark, supplied artwork and minimal footer. */
+.brand-title .seif-signature { width: 110px; height: 50px; }
+.f-name .seif-signature { width: 95px; height: 44px; }
+.frag-card, .entry-artwork-canvas, .it-mini-item { overflow: hidden; }
+.frag-card img, .entry-artwork-canvas img, .project-art-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.it-canvas-bg .project-art-image, .overlay-banner-bg .project-art-image { object-fit: contain; background: #08080A; }
+.it-nav-btn[hidden] { display: none; }
+.footer-info { gap: 12px; }
+@media(max-width: 480px) { .brand-title .seif-signature { width: 90px; height: 42px; } }
 </style>
   
   
@@ -1482,7 +1492,7 @@ textarea.bm-input {
   <header class="top-nav" id="topNav">
     <div class="nav-container">
       <!-- Clean Brand Name (No glowing dot) -->
-      <a href="#home" class="brand-title" aria-label="Mohamed Seif — Home"><svg class="seif-signature" viewBox="0 0 254 46" fill="none" aria-hidden="true"><path d="M16 6H8a5 5 0 0 0-5 5v7M30 40h8a5 5 0 0 0 5-5v-7" stroke="#CEFD00" stroke-width="3" stroke-linecap="square"/><path d="M33 12H19a6 6 0 0 0 0 12h8a6 6 0 0 1 0 12H13" stroke="#F7F7F5" stroke-width="5" stroke-linecap="square"/><text x="57" y="31" font-family="Instrument Sans,Arial,sans-serif" font-size="25" font-weight="600" letter-spacing="-1.05" fill="#F7F7F5">Mohamed <tspan dx="5" fill="#CEFD00">Seif</tspan></text></svg></a>
+      <a href="#home" class="brand-title" aria-label="Mohamed Seif — Home"><svg class="seif-signature" viewBox="0 0 158 72" fill="none" aria-hidden="true"><text x="3" y="12" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="4.4" fill="#F7F7F5">MOHAMED</text><g fill="#F7F7F5"><path d="M33 30H17c-4 0-6 2-6 5 0 3 2 4 6 5l9 2c9 2 13 6 13 13 0 10-7 15-19 15H2V60h18c5 0 7-2 7-5 0-2-2-4-6-5l-9-2C4 46 0 42 0 35c0-9 7-15 18-15h15z"/><path fill-rule="evenodd" d="M66 20c14 0 22 10 22 24v6H55c1 7 6 11 13 11 5 0 10-2 14-5l5 8c-5 4-12 6-20 6-16 0-25-10-25-25 0-14 9-25 24-25zm0 10c-6 0-10 4-11 11h21c-1-7-4-11-10-11z"/><path d="M94 22h12v47H94zM119 69V32h-8V22h8v-5c0-11 7-17 18-17h12v10h-10c-5 0-8 2-8 7v5h18v10h-18v37z"/></g><rect x="94" y="4" width="12" height="12" rx="3" fill="#CEFD00"/><path d="M143 57h13v12h-13z" fill="#CEFD00"/></svg></a>
 
       <!-- Active Section Indicator Links at Top -->
       <nav class="nav-sections" id="navSections">
@@ -1521,87 +1531,51 @@ textarea.bm-input {
     <div class="floating-fragments-viewport" id="fragmentsViewport">
       <!-- 12 orbiting fragments; each remains clickable -->
       <div class="hero-fragment hf-1" data-angle="-150" data-rot="-7" onclick="openProjectModal(0)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #261720, #0e090d);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #261720, #0e090d);"><img src="horror.webp" alt="Horror gaming thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-2" data-angle="-120" data-rot="6" onclick="openProjectModal(1)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #14202b, #0d1217);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #14202b, #0d1217);"><img src="chocolate.webp" alt="Chocolate comparison thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-3" data-angle="-90" data-rot="-5" onclick="openProjectModal(2)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #2b1720, #140d12);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #2b1720, #140d12);"><img src="farm.webp" alt="Farm challenge thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-4" data-angle="-60" data-rot="7" onclick="openProjectModal(3)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #1b281f, #0d1410);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #1b281f, #0d1410);"><img src="day-one.webp" alt="Day one challenge thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
-      <div class="hero-fragment hf-5" data-angle="-30" data-rot="-6" onclick="openProjectModal(4)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #2a2414, #141108);">
-          
-          
-        </div>
+      <div class="hero-fragment hf-5" data-angle="-30" data-rot="-6" onclick="openProjectModal(0)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #2a2414, #141108);"><img src="horror.webp" alt="Horror gaming thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
-      <div class="hero-fragment hf-6" data-angle="0" data-rot="5" onclick="openProjectModal(5)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #24142a, #120a15);">
-          
-          
-        </div>
+      <div class="hero-fragment hf-6" data-angle="0" data-rot="5" onclick="openProjectModal(1)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #24142a, #120a15);"><img src="chocolate.webp" alt="Chocolate comparison thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
-      <div class="hero-fragment hf-7" data-angle="30" data-rot="-4" onclick="openProjectModal(6)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #15272a, #0a1315);">
-          
-          
-        </div>
+      <div class="hero-fragment hf-7" data-angle="30" data-rot="-4" onclick="openProjectModal(2)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #15272a, #0a1315);"><img src="farm.webp" alt="Farm challenge thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
-      <div class="hero-fragment hf-8" data-angle="60" data-rot="8" onclick="openProjectModal(7)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #2a1515, #140a0a);">
-          
-          
-        </div>
+      <div class="hero-fragment hf-8" data-angle="60" data-rot="8" onclick="openProjectModal(3)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #2a1515, #140a0a);"><img src="day-one.webp" alt="Day one challenge thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-9" data-angle="90" data-rot="-9" onclick="openProjectModal(0)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #1a2228, #0b1014);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #1a2228, #0b1014);"><img src="horror.webp" alt="Horror gaming thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-10" data-angle="120" data-rot="5" onclick="openProjectModal(1)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #21172a, #100b14);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #21172a, #100b14);"><img src="chocolate.webp" alt="Chocolate comparison thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-11" data-angle="150" data-rot="-6" onclick="openProjectModal(2)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #292017, #120e0a);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #292017, #120e0a);"><img src="farm.webp" alt="Farm challenge thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-12" data-angle="180" data-rot="7" onclick="openProjectModal(3)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #142720, #0a1410);">
-          
-          
-        </div>
+        <div class="frag-card" style="background: linear-gradient(135deg, #142720, #0a1410);"><img src="day-one.webp" alt="Day one challenge thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
     </div>
 
@@ -1652,9 +1626,8 @@ textarea.bm-input {
           </div>
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
-              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #261720 0%, #0e090d 100%);">
-              </div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #261720 0%, #0e090d 100%);"><img src="horror.webp" alt="Horror gaming thumbnail" width="1920" height="1080" loading="lazy" decoding="async"></div>
+              <span class="entry-hover-action">VIEW ARTWORK &rarr;</span>
             </div>
           </div>
         </article>
@@ -1666,9 +1639,8 @@ textarea.bm-input {
           </div>
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
-              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #14202b 0%, #0d1217 100%);">
-              </div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #14202b 0%, #0d1217 100%);"><img src="chocolate.webp" alt="Chocolate comparison thumbnail" width="1920" height="1080" loading="lazy" decoding="async"></div>
+              <span class="entry-hover-action">VIEW ARTWORK &rarr;</span>
             </div>
           </div>
         </article>
@@ -1680,9 +1652,8 @@ textarea.bm-input {
           </div>
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
-              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #2b1720 0%, #140d12 100%);">
-              </div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #2b1720 0%, #140d12 100%);"><img src="farm.webp" alt="Farm challenge thumbnail" width="1920" height="1080" loading="lazy" decoding="async"></div>
+              <span class="entry-hover-action">VIEW ARTWORK &rarr;</span>
             </div>
           </div>
         </article>
@@ -1694,9 +1665,8 @@ textarea.bm-input {
           </div>
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
-              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #1b281f 0%, #0d1410 100%);">
-              </div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #1b281f 0%, #0d1410 100%);"><img src="day-one.webp" alt="Day one challenge thumbnail" width="1920" height="1080" loading="lazy" decoding="async"></div>
+              <span class="entry-hover-action">VIEW ARTWORK &rarr;</span>
             </div>
           </div>
         </article>
@@ -1949,12 +1919,11 @@ textarea.bm-input {
     <div class="container">
       <div class="footer-row-flex">
         <div class="footer-info">
-          <span class="f-name" aria-label="Mohamed Seif"><svg class="seif-signature" viewBox="0 0 254 46" fill="none" aria-hidden="true"><path d="M16 6H8a5 5 0 0 0-5 5v7M30 40h8a5 5 0 0 0 5-5v-7" stroke="#CEFD00" stroke-width="3" stroke-linecap="square"/><path d="M33 12H19a6 6 0 0 0 0 12h8a6 6 0 0 1 0 12H13" stroke="#F7F7F5" stroke-width="5" stroke-linecap="square"/><text x="57" y="31" font-family="Instrument Sans,Arial,sans-serif" font-size="25" font-weight="600" letter-spacing="-1.05" fill="#F7F7F5">Mohamed <tspan dx="5" fill="#CEFD00">Seif</tspan></text></svg></span>
-          <span class="f-role">YouTube Thumbnail Designer &middot; Strategy &middot; Visual Direction</span>
+          <span class="f-name" aria-label="Mohamed Seif"><svg class="seif-signature" viewBox="0 0 158 72" fill="none" aria-hidden="true"><text x="3" y="12" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="4.4" fill="#F7F7F5">MOHAMED</text><g fill="#F7F7F5"><path d="M33 30H17c-4 0-6 2-6 5 0 3 2 4 6 5l9 2c9 2 13 6 13 13 0 10-7 15-19 15H2V60h18c5 0 7-2 7-5 0-2-2-4-6-5l-9-2C4 46 0 42 0 35c0-9 7-15 18-15h15z"/><path fill-rule="evenodd" d="M66 20c14 0 22 10 22 24v6H55c1 7 6 11 13 11 5 0 10-2 14-5l5 8c-5 4-12 6-20 6-16 0-25-10-25-25 0-14 9-25 24-25zm0 10c-6 0-10 4-11 11h21c-1-7-4-11-10-11z"/><path d="M94 22h12v47H94zM119 69V32h-8V22h8v-5c0-11 7-17 18-17h12v10h-10c-5 0-8 2-8 7v5h18v10h-18v37z"/></g><rect x="94" y="4" width="12" height="12" rx="3" fill="#CEFD00"/><path d="M143 57h13v12h-13z" fill="#CEFD00"/></svg></span>
+          <span class="f-role">Thumbnail Designer</span>
         </div>
         <div class="footer-meta">
-          <span class="f-quote">Tested, not guessed. &middot; &copy; 2026 Mohamed Seif. All rights reserved.</span>
-          <a href="#home" class="f-top">&uarr; Back to top</a>
+          <span class="f-quote">&copy; 2026 Mohamed Seif. All rights reserved.</span>
         </div>
       </div>
     </div>
@@ -2053,8 +2022,8 @@ textarea.bm-input {
             <input type="text" id="bmChannel" required class="bm-input" placeholder="youtube.com/@yourchannel">
           </div>
           <div class="bm-field">
-            <label class="bm-label" for="bmLink">Reference / Unlisted Video Link</label>
-            <input type="url" id="bmLink" class="bm-input" placeholder="drive.google.com/... or unlisted link">
+            <label class="bm-label" for="bmLink">Reference / Unlisted Video Link (optional)</label>
+            <input type="url" id="bmLink" class="bm-input" placeholder="https://… (leave blank if unavailable)">
           </div>
         </div>
 
@@ -2175,7 +2144,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fragments.forEach((fragment,i) => {
     fragment.setAttribute('role','button');
     fragment.tabIndex = 0;
-    fragment.setAttribute('aria-label', `Open project ${i % 8 + 1}`);
+    fragment.setAttribute('aria-label', `Open project ${i % 4 + 1}`);
     fragment.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault(); fragment.click();
@@ -2462,6 +2431,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+
+  // Supplied artwork: one actual image per project, with no invented variants.
+  const suppliedArtwork = [{"src": "horror.webp", "alt": "Horror gaming thumbnail"}, {"src": "chocolate.webp", "alt": "Chocolate comparison thumbnail"}, {"src": "farm.webp", "alt": "Farm challenge thumbnail"}, {"src": "day-one.webp", "alt": "Day one challenge thumbnail"}];
+  const artworkNotes = [
+    ['A close-up reaction paired with a dark haunted-house scene and a threatening character.', 'Subject: Horror gaming', 'Composition: Face and character contrast'],
+    ['A side-by-side chocolate comparison with a central reaction and clearly separated product packaging.', 'Subject: Chocolate comparison', 'Composition: Central face with two products'],
+    ['A farming scene combining a close-up portrait, a red barn and a foreground pitchfork.', 'Subject: Farming challenge', 'Composition: Portrait against a bright outdoor setting'],
+    ['A day-one challenge image with a dollar bill, bold lettering and a portrait against green grass.', 'Subject: Day-one challenge', 'Composition: Text and dollar bill opposite the portrait']
+  ];
+  suppliedArtwork.forEach((art, i) => {
+    const p = projects[i];
+    p.image = art.src; p.alt = art.alt;
+    p.desc = artworkNotes[i][0]; p.metrics = artworkNotes[i].slice(1);
+    p.thumbs = [{ image: art.src, alt: art.alt, bg: p.gradient }];
+  });
+  function showArtwork(element, src, alt) {
+    element.replaceChildren();
+    if (!src) return;
+    const image = document.createElement('img');
+    image.src = src; image.alt = alt || ''; image.width = 1920; image.height = 1080;
+    image.className = 'project-art-image'; image.decoding = 'async';
+    element.appendChild(image);
+  }
+
   // 5. PROJECT VIEW OVERLAY LOGIC
   const overlay = document.getElementById('projectOverlay');
   const closeBtn = document.getElementById('overlayCloseBtn');
@@ -2490,6 +2483,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     oIndex.textContent = `PROJECT ${p.index}`;
     oBannerBg.style.background = p.gradient;
+    showArtwork(oBannerBg, p.image, p.alt);
+    document.querySelector(".os-right .os-heading").textContent = p.image ? "Artwork Details" : "Packaging Metrics";
+    document.querySelector(".iterations-header .os-heading").textContent = p.image ? "Artwork" : "Packaging Variations (10 in File)";
     oContext.textContent = p.desc;
     oBriefBtn.setAttribute('data-scope', p.service);
 
@@ -2514,6 +2510,7 @@ document.addEventListener('DOMContentLoaded', () => {
       item.type = 'button';
       item.className = 'it-mini-item' + (i === 0 ? ' active' : '');
       item.style.background = t.bg;
+      showArtwork(item, t.image, "");
       item.setAttribute('aria-label', `View image ${i + 1}`);
       item.onclick = () => loadIterationSlide(i);
       itStrip.appendChild(item);
@@ -2526,7 +2523,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const t = p.thumbs[i];
 
     itCanvasBg.style.background = t.bg;
-    itCount.textContent = `${i + 1 < 10 ? '0' : ''}${i + 1} / 10`;
+    showArtwork(itCanvasBg, t.image, t.alt);
+    itPrev.hidden = itNext.hidden = p.thumbs.length < 2;
+    itCount.textContent = `${i + 1 < 10 ? '0' : ''}${i + 1} / ${String(p.thumbs.length).padStart(2, '0')}`;
 
     const items = itStrip.querySelectorAll('.it-mini-item');
     items.forEach((it, idx) => {
