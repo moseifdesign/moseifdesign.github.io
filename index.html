@@ -1505,6 +1505,14 @@ textarea.bm-input {
 
 /* V30: hold the composition below the nav throughout the introduction. */
 .hero-scroll-stage .hero-section { top:var(--hero-top, 80px); }
+
+/* V33: compact name and role beside the unchanged M icon. */
+.brand-title { gap:11px; align-items:center; }
+.brand-title .seif-signature { flex-shrink:0; }
+.brand-lockup { display:flex; flex-direction:column; gap:5px; text-align:left; }
+.brand-lockup-name { color:#F7F7F5; font-size:14px; font-weight:700; letter-spacing:.035em; line-height:1; }
+.brand-lockup-role { color:#929297; font-size:8px; font-weight:400; letter-spacing:.14em; line-height:1; }
+@media(max-width:480px) { .brand-title { gap:9px; } .brand-lockup-name { font-size:12px; } .brand-lockup-role { font-size:7px; } }
 </style>
   
   
@@ -1523,7 +1531,7 @@ textarea.bm-input {
   <header class="top-nav" id="topNav">
     <div class="nav-container">
       <!-- Clean Brand Name (No glowing dot) -->
-      <a href="#home" class="brand-title" aria-label="Mohamed Seif — Home"><svg class="seif-signature" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#CEFD00"/><path d="M13 49V15h10l9 15 9-15h10v34H41V33l-9 14-9-14v16Z" fill="#08080A"/></svg></a>
+      <a href="#home" class="brand-title" aria-label="Mohamed Seif — Home"><svg class="seif-signature" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#CEFD00"/><path d="M13 49V15h10l9 15 9-15h10v34H41V33l-9 14-9-14v16Z" fill="#08080A"/></svg><span class="brand-lockup"><span class="brand-lockup-name">MOHAMED SEIF</span><span class="brand-lockup-role">THUMBNAIL DESIGNER</span></span></a>
 
       <!-- Active Section Indicator Links at Top -->
       <nav class="nav-sections" id="navSections">
