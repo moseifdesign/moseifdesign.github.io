@@ -2199,6 +2199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  const motionOrder = [0,5,9,2,7,11,4,1,8,3,10,6];
   function renderHero(now) {
     if (startedAt === null) startedAt = now;
     const dt = Math.min(1000, now - (lastTime || now));
@@ -2206,18 +2207,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const reduced = motionPreference.matches;
     const target = clamp((window.scrollY - stageTop) / travel);
     smoothProgress = target;
-    const fade = ease(clamp((smoothProgress - 0.73) / 0.25));
-    const turn = reduced ? 0 : clamp(smoothProgress / 0.88) * Math.PI * 2;
+    let allCardsHidden = true;
     const radiusX = Math.min(window.innerWidth * 0.46, 840);
     const radiusY = Math.min(heroSection.offsetHeight * 0.31, 310);
     fragments.forEach((fragment, i) => {
       const [degrees, radius, vertical, size, tilt] = layout[i];
+      // Independent start, travel and exit timings; the first card reacts immediately.
+      const rank = motionOrder[i];
+      const start = reduced ? 0 : rank * 0.012;
+      const finish = reduced ? 0.98 : 0.86 + rank / 11 * 0.12;
+      const cardProgress = clamp((smoothProgress - start) / (finish - start));
+      const fade = ease(clamp((cardProgress - 0.74) / 0.26));
+      if (fade < 1) allCardsHidden = false;
+      const turn = reduced ? 0 : clamp(cardProgress / 0.9) * Math.PI * 2;
       const base = degrees * Math.PI / 180;
       const angle = base + turn;
       const depth = Math.sin(angle);
-      const entrance = (reduced || window.scrollY > 0) ? 1 : 1 - Math.pow(1 - clamp((now - startedAt - i * 32) / 1400), 3);
-      const floatX = reduced ? 0 : Math.sin(now * 0.00048 + i * 0.83) * 7;
-      const floatY = reduced ? 0 : Math.cos(now * 0.00055 + i * 1.17) * 8;
+      const entrance = (reduced || window.scrollY > 0) ? 1 : 1 - Math.pow(1 - clamp((now - startedAt - rank * 95) / 1400), 3);
+      const floatX = reduced ? 0 : Math.sin(now * (0.00043 + (i % 4) * 0.000035) + i * 0.83) * 7;
+      const floatY = reduced ? 0 : Math.cos(now * (0.00048 + (i % 5) * 0.00003) + i * 1.17) * 8;
       const spread = 1 + fade * 0.24;
       const x = Math.cos(angle) * radiusX * radius * spread + floatX;
       const y = (vertical * radiusY + Math.sin(angle - base) * radiusY * (0.13 + (i % 3) * 0.06)) * spread + floatY;
@@ -2227,7 +2235,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fragment.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y + (1 - entrance) * 22}px, 0) rotate(${tilt + (reduced ? 0 : Math.sin(angle) * 2)}deg) scale(${scale})`;
 
     });
-    const hidden = fade >= 1;
+    const hidden = allCardsHidden;
     fragmentsViewport.classList.toggle('is-hidden', hidden);
     // No independent visibility transition: cards and next content switch in the same frame.
     gateContent(!hidden);
