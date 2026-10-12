@@ -1613,8 +1613,8 @@ textarea.bm-input {
         <div class="frag-card" style="background: linear-gradient(135deg, #21172a, #100b14);"><img src="prison-night.webp" alt="Night prison escape thumbnail" width="1920" height="1080" decoding="async"></div>
       </div>
 
-      <div class="hero-fragment hf-11" data-angle="150" data-rot="-6" onclick="openProjectModal(2)">
-        <div class="frag-card" style="background: linear-gradient(135deg, #292017, #120e0a);"><img src="farm.webp" alt="Farm challenge thumbnail" width="1920" height="1080" decoding="async"></div>
+      <div class="hero-fragment hf-11" data-angle="150" data-rot="-6" onclick="openProjectModal(6)">
+        <div class="frag-card" style="background: linear-gradient(135deg, #292017, #120e0a);"><img src="fortnite-ramadan.webp" alt="Fortnite Ramadan gaming thumbnail" width="3840" height="2160" decoding="async"></div>
       </div>
 
       <div class="hero-fragment hf-12" data-angle="180" data-rot="7" onclick="openProjectModal(3)">
@@ -1748,8 +1748,7 @@ textarea.bm-input {
           </div>
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
-              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #15272a 0%, #0a1315 100%);">
-              </div>
+              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #15272a 0%, #0a1315 100%);"><img src="fortnite-ramadan.webp" alt="Fortnite Ramadan gaming thumbnail" width="3840" height="2160" loading="lazy" decoding="async"></div>
               <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
             </div>
           </div>
@@ -2201,7 +2200,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fragments.forEach((fragment,i) => {
     fragment.setAttribute('role','button');
     fragment.tabIndex = 0;
-    fragment.setAttribute('aria-label', `Open project ${i === 8 ? 5 : i === 9 ? 6 : i % 4 + 1}`);
+    fragment.setAttribute('aria-label', `Open project ${i === 8 ? 5 : i === 9 ? 6 : i === 10 ? 7 : i % 4 + 1}`);
     fragment.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault(); fragment.click();
@@ -2525,7 +2524,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Supplied artwork: one actual image per project, with no invented variants.
-  const suppliedArtwork = [{"src": "horror.webp", "alt": "Horror gaming thumbnail"}, {"src": "chocolate.webp", "alt": "Chocolate comparison thumbnail"}, {"src": "farm.webp", "alt": "Farm challenge thumbnail"}, {"src": "day-one.webp", "alt": "Day one challenge thumbnail"}, {"src": "prison-snow.webp", "alt": "Snow prison escape thumbnail"}, {"src": "prison-night.webp", "alt": "Night prison escape thumbnail"}];
+  const suppliedArtwork = [{"src":"horror.webp","alt":"Horror gaming thumbnail"},{"src":"chocolate.webp","alt":"Chocolate comparison thumbnail"},{"src":"farm.webp","alt":"Farm challenge thumbnail"},{"src":"day-one.webp","alt":"Day one challenge thumbnail"},{"src":"prison-snow.webp","alt":"Snow prison escape thumbnail"},{"src":"prison-night.webp","alt":"Night prison escape thumbnail"},{"src":"fortnite-ramadan.webp","alt":"Fortnite Ramadan gaming thumbnail"}];
   const artworkNotes = [
     ['A close-up reaction paired with a dark haunted-house scene and a threatening character.', 'Subject: Horror gaming', 'Composition: Face and character contrast'],
     ['A side-by-side chocolate comparison with a central reaction and clearly separated product packaging.', 'Subject: Chocolate comparison', 'Composition: Central face with two products'],
@@ -2535,7 +2534,7 @@ document.addEventListener('DOMContentLoaded', () => {
   suppliedArtwork.forEach((art, i) => {
     const p = projects[i];
     p.image = art.src; p.alt = art.alt;
-    p.desc = artworkNotes[i]?.[0] || (i === 4 ? 'Prison escape scene with snow, a shovel and an orange jumpsuit.' : 'Prison escape scene at night with a shovel and foreground soil.'); p.metrics = artworkNotes[i]?.slice(1) || [];
+    p.desc = i === 6 ? 'Fortnite gaming scene with a central portrait, purple lighting and a Ramadan gift box.' : artworkNotes[i]?.[0] || (i === 4 ? 'Prison escape scene with snow, a shovel and an orange jumpsuit.' : 'Prison escape scene at night with a shovel and foreground soil.'); p.metrics = artworkNotes[i]?.slice(1) || [];
     p.thumbs = [{ image: art.src, alt: art.alt, bg: p.gradient }];
   });
   function showArtwork(element, src, alt) {
