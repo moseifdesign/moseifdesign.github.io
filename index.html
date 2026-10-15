@@ -25,6 +25,10 @@
   --muted-text: #9A9A9F;
   --subtle-text: #505058;
   --accent: #CEFD00;
+  /* Supporting greens sampled from the profile portrait background. */
+  --brand-green: #79A700;
+  --brand-green-deep: #507E01;
+  --brand-green-rgb: 121, 167, 0;
   --accent-glow: rgba(206, 253, 0, 0.25);
   --border: rgba(247, 247, 245, 0.13);
   --border-subtle: rgba(247, 247, 245, 0.06);
@@ -1517,6 +1521,14 @@ textarea.bm-input {
 /* V34: footer uses the same name and role lockup as the header. */
 .f-name { display:inline-flex; align-items:center; gap:11px; }
 .f-name .seif-signature { flex-shrink:0; }
+
+/* Profile palette: soft background accents, with original text/button contrast. */
+.hero-section {
+  background-image: radial-gradient(ellipse at 50% 46%, rgba(var(--brand-green-rgb), 0.12) 0%, rgba(var(--brand-green-rgb), 0.04) 38%, transparent 70%);
+}
+.contact-section {
+  background-image: radial-gradient(ellipse at 50% 100%, rgba(var(--brand-green-rgb), 0.09) 0%, transparent 68%);
+}
 </style>
   
   
