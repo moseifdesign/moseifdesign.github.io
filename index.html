@@ -1531,36 +1531,17 @@ textarea.bm-input {
 }
 
 /* Secondary palette and quiet project invitations. */
-.entry-artwork-box, .hero-fragment {
+.entry-artwork-box {
   border-color: rgba(var(--brand-green-rgb), .62);
   box-shadow: 3px 4px 0 var(--brand-green-deep), 0 16px 40px rgba(0, 0, 0, .65);
 }
-.work-entry-card:hover .entry-artwork-box, .hero-fragment:hover {
+.work-entry-card:hover .entry-artwork-box {
   border-color: var(--brand-green);
 }
 .nav-cta-btn { border-color: rgba(var(--brand-green-rgb), .58); }
 .editorial-btn:focus-visible, .nav-cta-btn:focus-visible {
   outline: 2px solid var(--main-text);
   outline-offset: 5px;
-}
-@keyframes projectInvitation {
-  0%, 100% { scale: 1; }
-  50% { scale: 1.065; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .hero-cta-buttons .editorial-btn, .contact-action-box .primary, .nav-cta-btn {
-    animation: projectInvitation 2.8s ease-in-out infinite;
-    transform-origin: center;
-    animation-delay: 2s;
-  }
-  .nav-cta-btn { animation-delay: 2.8s; }
-  .contact-action-box .primary { animation-delay: 1s; }
-  .hero-cta-buttons .editorial-btn:is(:hover, :focus-visible, :active),
-  .contact-action-box .primary:is(:hover, :focus-visible, :active),
-  .nav-cta-btn:is(:hover, :focus-visible, :active) {
-    animation-play-state: paused;
-    transform: none;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .editorial-btn, .nav-cta-btn { animation: none; transition: none; }
