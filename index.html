@@ -1544,22 +1544,22 @@ textarea.bm-input {
   outline-offset: 5px;
 }
 @keyframes projectInvitation {
-  0%, 66%, 100% { translate: 0 0; scale: 1; }
-  80% { translate: 0 -2px; scale: 1.012; }
+  0%, 100% { scale: 1; }
+  50% { scale: 1.035; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero-cta-buttons .primary, .contact-action-box .primary, .nav-cta-btn {
-    animation: projectInvitation 7s ease-in-out infinite;
+    animation: projectInvitation 4s ease-in-out infinite;
+    transform-origin: center;
     animation-delay: 2s;
   }
-  .nav-cta-btn { animation-delay: 4.3s; }
+  .nav-cta-btn { animation-delay: 2.8s; }
   .contact-action-box .primary { animation-delay: 1s; }
   .hero-cta-buttons .primary:is(:hover, :focus-visible, :active),
   .contact-action-box .primary:is(:hover, :focus-visible, :active),
   .nav-cta-btn:is(:hover, :focus-visible, :active) {
-    animation: none;
-    translate: 0 0;
-    scale: 1;
+    animation-play-state: paused;
+    transform: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
