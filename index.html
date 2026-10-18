@@ -1547,6 +1547,25 @@ textarea.bm-input {
   .editorial-btn, .nav-cta-btn { animation: none; transition: none; }
   .editorial-btn:hover, .nav-cta-btn:hover { transform: none; }
 }
+.studio-info { padding:90px 0; border-top:1px solid var(--border-subtle); }
+.designer-intro { display:grid; grid-template-columns:240px 1fr; gap:48px; align-items:center; }
+.designer-intro > img { width:100%; height:auto; border-radius:24px; }
+.designer-intro p,.study p,.scope-faq p { color:var(--muted-text); line-height:1.8; margin:16px 0; }
+.project-studies,.scope-faq { margin-top:90px; }
+.study { padding:28px; margin-top:28px; background:var(--surface); border:1px solid var(--border); border-radius:20px; }
+.study h3 { font-size:1.5rem; }
+.study figure { margin:0; min-width:0; }
+.study img { display:block; width:100%; height:auto; border-radius:14px; }
+.study > figure:not(.small-proof) { max-width:760px; }
+.study-pair { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.study figcaption { margin:10px 0; color:var(--muted-text); font-size:.8rem; }
+.study .small-proof { width:240px; max-width:100%; margin-top:24px; }
+.scope-faq details { padding:22px 0; border-bottom:1px solid var(--border); }
+.scope-faq summary { cursor:pointer; font-weight:600; }
+.scope-faq summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
+.contact-action-box { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+@media(max-width:700px) { .designer-intro,.study-pair {grid-template-columns:1fr;} .designer-intro > img {max-width:180px;} .study{padding:18px;} .studio-info{padding:60px 0;} }
+
 </style>
   
   
@@ -1665,7 +1684,7 @@ textarea.bm-input {
       </h1>
 
       <p class="hero-subtext-para">
-        Scroll-stopping designs engineered to boost your click-through rate, multiply your views, and grow your channel faster &mdash; without you touching Photoshop.
+        Custom thumbnails that turn your video idea into a clear, compelling first impression. Designed to stand out and read at a glance.
       </p>
 
       <div class="hero-cta-buttons">
@@ -1684,9 +1703,9 @@ textarea.bm-input {
       
       <div class="section-lead-block">
         <span class="section-tag-indicator">WORK</span>
-        <h2 class="section-main-heading">Selected work,<br>not a gallery dump.</h2>
+        <h2 class="section-main-heading">Selected thumbnail designs.</h2>
         <p class="section-lead-desc">
-          A curated archive of thumbnails built to read fast, feel distinct, and earn the first click.
+          Personal projects and concept designs exploring gaming, challenges and entertainment. Not commissioned by the creators shown.
         </p>
       </div>
 
@@ -1753,7 +1772,7 @@ textarea.bm-input {
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
               <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #2a2414 0%, #141108 100%);"><img src="prison-snow.webp" alt="Snow prison escape thumbnail" width="1920" height="1080" loading="lazy" decoding="async"></div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+              <span class="entry-hover-action">VIEW ARTWORK &rarr;</span>
             </div>
           </div>
         </article>
@@ -1766,7 +1785,7 @@ textarea.bm-input {
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
               <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #24142a 0%, #120a15 100%);"><img src="prison-night.webp" alt="Night prison escape thumbnail" width="1920" height="1080" loading="lazy" decoding="async"></div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+              <span class="entry-hover-action">VIEW ARTWORK &rarr;</span>
             </div>
           </div>
         </article>
@@ -1779,24 +1798,12 @@ textarea.bm-input {
           <div class="work-entry-preview">
             <div class="entry-artwork-box">
               <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #15272a 0%, #0a1315 100%);"><img src="fortnite-ramadan.webp" alt="Fortnite Ramadan gaming thumbnail" width="3840" height="2160" loading="lazy" decoding="async"></div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
+              <span class="entry-hover-action">VIEW ARTWORK &rarr;</span>
             </div>
           </div>
         </article>
 
-        <!-- 08 -->
-        <article class="work-entry-card" onclick="openProjectModal(7)">
-          <div class="work-entry-text">
-            <span class="entry-index">08</span>
-          </div>
-          <div class="work-entry-preview">
-            <div class="entry-artwork-box">
-              <div class="entry-artwork-canvas" style="background: linear-gradient(135deg, #2a1515 0%, #140a0a 100%);">
-              </div>
-              <span class="entry-hover-action">EXPLORE 10 VARIANTS &rarr;</span>
-            </div>
-          </div>
-        </article>
+
 
       </div>
     </div>
@@ -1834,7 +1841,7 @@ textarea.bm-input {
             <span class="te-meta">FEED AUDIT</span>
           </div>
           <p class="te-desc">
-            I audit competitor feeds, find visual gaps, and draft 2&ndash;3 high-CTR hook concepts.
+            I review your video idea, audience and references, then agree on one visual direction before production.
           </p>
         </div>
 
@@ -1856,7 +1863,7 @@ textarea.bm-input {
             <span class="te-meta">120PX TEST</span>
           </div>
           <p class="te-desc">
-            Generating A/B variants, running the 120px mobile test, and perfecting micro-contrast.
+            Checking the design at small-screen size and refining contrast and readability. Additional concepts or test variants can be quoted separately.
           </p>
         </div>
 
@@ -1867,7 +1874,7 @@ textarea.bm-input {
             <span class="te-meta">HANDOFF</span>
           </div>
           <p class="te-desc">
-            Upload-ready, lossless PNG files delivered with recommended title combinations, on time.
+            Final PNG/JPG files after approval, with two revision rounds included. Source PSD files are quoted separately before work begins.
           </p>
         </div>
       </div>
@@ -1896,33 +1903,33 @@ textarea.bm-input {
             <span class="ser-rate">$60</span>
           </div>
           <p class="ser-detail">
-            One-off thumbnail for a single upload. Fast turnaround, built to win the click against whatever else is on the feed.
+            1 custom thumbnail, one agreed direction and 2 revision rounds. First draft in 1&ndash;3 days after a complete brief and confirmed start date. Final PNG/JPG included.
           </p>
           <span class="ser-arrow">&rarr;</span>
         </div>
 
         <!-- 02 -->
-        <div class="service-entry-row trigger-brief" data-scope="Thumbnail Pack ($250)">
+        <div class="service-entry-row trigger-brief" data-scope="5-Thumbnail Pack ($250)">
           <span class="ser-num">02</span>
           <div class="ser-head-col">
-            <h3 class="ser-title">Thumbnail Pack</h3>
+            <h3 class="ser-title">5-Thumbnail Pack</h3>
             <span class="ser-rate">$250</span>
           </div>
           <p class="ser-detail">
-            A batch of thumbnails for a content run &mdash; one visual language, no two looking alike.
+            5 custom thumbnails &mdash; $50 each. Includes 2 revision rounds per design and final PNG/JPG files. Delivered in agreed batches, up to 3 thumbnails per week.
           </p>
           <span class="ser-arrow">&rarr;</span>
         </div>
 
         <!-- 03 -->
-        <div class="service-entry-row featured trigger-brief" data-scope="Monthly Retainer ($550)">
+        <div class="service-entry-row featured trigger-brief" data-scope="12 Monthly Thumbnails ($550)">
           <span class="ser-num">03</span>
           <div class="ser-head-col">
-            <h3 class="ser-title">Monthly Retainer</h3>
+            <h3 class="ser-title">12 Thumbnails / Month</h3>
             <span class="ser-rate">$550</span>
           </div>
           <p class="ser-detail">
-            Ongoing thumbnail design for a consistent upload schedule and a reliable visual system.
+            12 thumbnails per month, scheduled at up to 3 per week. Includes 2 revision rounds per design, final PNG/JPG files and a reserved production schedule. Availability confirmed before booking.
           </p>
           <span class="ser-arrow">&rarr;</span>
         </div>
@@ -1946,6 +1953,15 @@ textarea.bm-input {
   <!-- ==========================================================================
        05. CONTACT (EDITORIAL CLOSING & BRIEF TRIGGER)
        ========================================================================== -->
+<section class="studio-info" id="about"><div class="container">
+  <div class="designer-intro"><img src="mohamed-profile.webp" alt="Mohamed Seif, thumbnail designer" width="240" height="240" loading="lazy"><div><span class="section-tag-indicator">YOUR DESIGNER</span><h2 class="section-main-heading">Hi, I&rsquo;m Mohamed.</h2><p>I create thumbnails for gaming, challenge and entertainment videos, with a focus on expressive faces, clear storytelling and strong composition.</p><p>Work directly with me from the first idea to the final file. Typical first draft: 1&ndash;3 days after the brief and start date are confirmed.</p><a class="editorial-btn secondary" href="https://wa.me/201044301448" target="_blank" rel="noopener">Ask me on WhatsApp &rarr;</a></div></div>
+  <div class="project-studies"><span class="section-tag-indicator">BEHIND THE DESIGN</span><h2 class="section-main-heading">From concept to thumbnail.</h2><p class="section-lead-desc">Personal concept studies. These examples show the design choices, not measured performance results.</p>
+    <article class="study"><h3>Day-one challenge</h3><p>A simple visual contrast: a one-dollar starting point on the left, with the portrait on the right. Large shapes keep the premise readable at a small size.</p><div class="study-pair"><figure><img src="day-one-sketch.webp" width="1600" height="893" loading="lazy" alt="Day-one challenge concept sketch"><figcaption>Concept sketch</figcaption></figure><figure><img src="day-one.webp" width="1920" height="1080" loading="lazy" alt="Finished day-one challenge thumbnail"><figcaption>Final design</figcaption></figure></div><figure class="small-proof"><img src="day-one.webp" width="240" height="135" loading="lazy" alt="Day-one thumbnail at small-screen size"><figcaption>Small-screen view</figcaption></figure></article>
+    <article class="study"><h3>Chocolate comparison</h3><p>Two products frame a central reaction. The split background separates the choices and makes the comparison clear without adding a headline.</p><figure><img src="chocolate.webp" width="1920" height="1080" loading="lazy" alt="Chocolate comparison concept thumbnail"><figcaption>Final design / personal concept</figcaption></figure><figure class="small-proof"><img src="chocolate.webp" width="240" height="135" loading="lazy" alt="Chocolate comparison at small-screen size"><figcaption>Small-screen view</figcaption></figure></article>
+  </div>
+  <div class="scope-faq"><h2 class="section-main-heading">Before we start.</h2><details><summary>What does a revision include?</summary><p>Two rounds of consolidated feedback per thumbnail, refining the agreed direction. A new concept, new brief or additional variations are quoted separately before I continue.</p></details><details><summary>What will I receive?</summary><p>Final upload-ready PNG/JPG files. Editable PSD files are optional and priced separately before booking; third-party asset licensing may limit what can be transferred.</p></details><details><summary>How does the schedule work?</summary><p>A first draft typically takes 1&ndash;3 days after your brief is complete and your start date is confirmed. Batch and monthly work is scheduled at up to 3 thumbnails per week; revisions and feedback can affect final delivery. Unused monthly slots and any rollover are agreed in writing before booking.</p></details><details><summary>Do you guarantee CTR or views?</summary><p>No. A thumbnail is one part of video performance, alongside the topic, title, audience and distribution. My focus is clear, compelling design; performance claims need real channel data.</p></details></div>
+</div></section>
+
   <section class="contact-section" id="contact">
     <div class="container">
       <div class="editorial-contact-stage">
@@ -1956,6 +1972,7 @@ textarea.bm-input {
         </h2>
 
         <div class="contact-action-box">
+<a class="editorial-btn secondary" href="https://wa.me/201044301448" target="_blank" rel="noopener">Quick chat on WhatsApp &rarr;</a>
           <button class="editorial-btn primary trigger-brief" data-scope="Direct Inquiry">
             <span>Open the brief &rarr;</span>
           </button>
@@ -1968,7 +1985,7 @@ textarea.bm-input {
           </div>
           <div class="contact-card-unit">
             <span class="unit-tag">PHONE / WHATSAPP</span>
-            <a href="tel:+201044301448" class="unit-value">01044301448</a>
+            <a href="https://wa.me/201044301448" target="_blank" rel="noopener" class="unit-value">01044301448</a>
           </div>
           <div class="contact-card-unit">
             <span class="unit-tag">INSTAGRAM</span>
@@ -2005,7 +2022,7 @@ textarea.bm-input {
   <div class="project-overlay" id="projectOverlay" aria-hidden="true">
     <div class="project-overlay-body">
       <div class="overlay-nav-bar">
-        <span class="overlay-index" id="overlayIndex">PROJECT 01 / 08</span>
+        <span class="overlay-index" id="overlayIndex">PERSONAL CONCEPT / 01 / 07</span>
         <button class="overlay-close-btn" id="overlayCloseBtn">&times; Close</button>
       </div>
 
@@ -2016,25 +2033,20 @@ textarea.bm-input {
 
       <div class="overlay-strategy-row">
         <div class="os-left">
-          <h4 class="os-heading">Strategic Context</h4>
-          <p class="os-para" id="overlayContext">
-            The premise demanded instantaneous clarity on mobile feeds where competing videos used generic oversaturated faces. We introduced micro-expression retouching, rim lighting separation, and removed 100% of distracting visual clutter.
-          </p>
+          <h4 class="os-heading">Design approach</h4>
+          <p class="os-para" id="overlayContext">Personal concept work.</p>
         </div>
         <div class="os-right">
-          <h4 class="os-heading">Packaging Metrics</h4>
-          <ul class="os-list" id="overlayMetrics">
-            <li><strong>Focal Lock:</strong> Direct emotional gaze anchoring the primary third</li>
-            <li><strong>Feed Legibility:</strong> Tested and certified at 120px mobile scale</li>
-          </ul>
+          <h4 class="os-heading">Artwork Details</h4>
+          <ul class="os-list" id="overlayMetrics"></ul>
         </div>
       </div>
 
       <!-- 10 Thumbnail Packaging Iterations -->
       <div class="overlay-iterations-block">
         <div class="iterations-header">
-          <h4 class="os-heading">Packaging Variations (10 in File)</h4>
-          <span class="iterations-count" id="iterationsCount">01 / 10</span>
+          <h4 class="os-heading">Artwork</h4>
+          <span class="iterations-count" id="iterationsCount">01 / 01</span>
         </div>
 
         <div class="iterations-main-viewer">
@@ -2102,8 +2114,8 @@ textarea.bm-input {
             <label class="bm-label" for="bmScope">Selected Scope *</label>
             <select id="bmScope" class="bm-input">
               <option value="Single Thumbnail ($60)">Single Thumbnail &mdash; $60</option>
-              <option value="Thumbnail Pack ($250)">Thumbnail Pack &mdash; $250</option>
-              <option value="Monthly Retainer ($550)">Monthly Retainer &mdash; $550</option>
+              <option value="5-Thumbnail Pack ($250)">5 thumbnails &mdash; $250</option>
+              <option value="12 Monthly Thumbnails ($550)">12 thumbnails / month &mdash; $550</option>
               <option value="Custom Project">Custom Project</option>
               <option value="Direct Inquiry">Direct Inquiry</option>
             </select>
@@ -2341,217 +2353,7 @@ document.addEventListener('DOMContentLoaded', () => {
   trackedSections.forEach(sec => navObserver.observe(sec));
 
   // 4. PROJECT CASE STUDIES DATA (8 PROJECTS, 10 THUMBNAILS EACH)
-  const projects = [
-    {
-      index: "01 / 08",
-      title: "I Spent 50 Hours In A Supermax Cell",
-      category: "CHALLENGE · HIGH STAKES",
-      service: "Single Thumbnail + A/B Testing",
-      year: "2026",
-      desc: "Engineered for claustrophobic tension with isolated rim lighting and direct pupil focal lock. Tested across 12 competitor feeds, yielding a +21.2% click-through rate lift.",
-      metrics: [
-        "Focal Lock: Direct emotional gaze anchoring the primary third",
-        "Feed Legibility: Certified at 120px mobile scale under dark & light modes",
-        "Performance: +21.2% CTR lift over channel 90-day baseline"
-      ],
-      gradient: "linear-gradient(135deg, #261720 0%, #0e090d 100%)",
-      thumbs: [
-        { name: "01 · Master Final Upload", hook: "Intense Face + Bars Close-up", bg: "linear-gradient(135deg, #261720, #0e090d)" },
-        { name: "02 · A/B Variant: Cold Blue", hook: "Cold Steel Palette Test", bg: "linear-gradient(135deg, #121c24, #080d12)" },
-        { name: "03 · Guard Tower Isolation", hook: "CCTV Security Angle", bg: "linear-gradient(135deg, #1c1424, #0a0812)" },
-        { name: "04 · 120px Mobile Screen Pass", hook: "Small-Screen Contrast Pass", bg: "linear-gradient(135deg, #241414, #0f0808)" },
-        { name: "05 · Extreme Pupil Lock", hook: "Direct Viewer Eye Contact", bg: "linear-gradient(135deg, #1a2216, #090f08)" },
-        { name: "06 · Concrete Texture Macro", hook: "Physical Isolation Atmosphere", bg: "linear-gradient(135deg, #2b2210, #130f06)" },
-        { name: "07 · Infrared Surveillance Cam", hook: "Monochromatic Night Vision", bg: "linear-gradient(135deg, #0e2417, #06120b)" },
-        { name: "08 · Alternate Title Pairing", hook: "Optimized for '50 HOURS IN CELL'", bg: "linear-gradient(135deg, #251221, #0f070e)" },
-        { name: "09 · Split Time Comparison", hook: "Hour 01 vs Hour 50 Fatigue", bg: "linear-gradient(135deg, #1b1b22, #0d0d12)" },
-        { name: "10 · Raw Plate vs Final Grade", hook: "Production Layer Grading", bg: "linear-gradient(135deg, #201a14, #100c0a)" }
-      ]
-    },
-    {
-      index: "02 / 08",
-      title: "Pro 2v2 Championship Finals",
-      category: "GAMING & ESPORTS",
-      service: "Thumbnail Pack",
-      year: "2026",
-      desc: "High-contrast 3D character extraction, clean weapon silhouette separation, and tournament tension designed for Battle Royale esports feeds.",
-      metrics: [
-        "Silhouette Craft: Clean 3D player extraction with neon rim lights",
-        "Color Discipline: Zero muddy midtones to stand out on dark mobile feeds",
-        "Performance: +18.4% CTR lift across tournament series"
-      ],
-      gradient: "linear-gradient(135deg, #14202b 0%, #0d1217 100%)",
-      thumbs: [
-        { name: "01 · Championship Win Render", hook: "3D Duo Model Silhouette", bg: "linear-gradient(135deg, #14202b, #0d1217)" },
-        { name: "02 · Trophy Golden Hour", hook: "Victory & Wealth Lighting", bg: "linear-gradient(135deg, #292410, #120f06)" },
-        { name: "03 · Red Storm Overtime", hook: "High Tension Final Circle", bg: "linear-gradient(135deg, #281414, #120808)" },
-        { name: "04 · Mythic Weapon Flare", hook: "Golden Weapon Focal Point", bg: "linear-gradient(135deg, #122421, #061210)" },
-        { name: "05 · Pro Facecam Clutch", hook: "Extreme Clutch Expression", bg: "linear-gradient(135deg, #201428, #0d0714)" },
-        { name: "06 · 30-Kill Counter Hook", hook: "High Kill Game Story", bg: "linear-gradient(135deg, #241812, #100b07)" },
-        { name: "07 · Dark Mode Feed Pass", hook: "Mobile Feed Dark Theme Test", bg: "linear-gradient(135deg, #111b24, #080d12)" },
-        { name: "08 · Rival Duo Split Stare", hook: "Split Red vs Blue Composition", bg: "linear-gradient(135deg, #1f1424, #0c0812)" },
-        { name: "09 · Clean Silhouette Minimap", hook: "Zero Clutter Esports Concept", bg: "linear-gradient(135deg, #16241a, #08120b)" },
-        { name: "10 · 120px Screen Verification", hook: "Verified Small-Screen Read", bg: "linear-gradient(135deg, #1f1b24, #0e0a12)" }
-      ]
-    },
-    {
-      index: "03 / 08",
-      title: "Digital Exposé: Dark Side Of Influencers",
-      category: "DOCUMENTARY / ESSAY",
-      service: "Single Thumbnail",
-      year: "2026",
-      desc: "Documentary-grade intrigue with subtle evidence overlays, low-key lighting, and zero clickbait tropes, earning genuine curiosity clicks.",
-      metrics: [
-        "Art Direction: Editorial noir lighting with forensic dossier overlays",
-        "Psychology: Curiosity gap triggered without looking sensationalist",
-        "Performance: +16.9% CTR lift on longform 45-minute video essay"
-      ],
-      gradient: "linear-gradient(135deg, #2b1720 0%, #140d12 100%)",
-      thumbs: [
-        { name: "01 · The Redacted Dossier", hook: "Classified Document Aesthetic", bg: "linear-gradient(135deg, #2b1720, #140d12)" },
-        { name: "02 · Low-Key Noir Portrait", hook: "Single Shaft Studio Lighting", bg: "linear-gradient(135deg, #18181f, #0a0a0f)" },
-        { name: "03 · Shattered Phone Screen", hook: "Broken Reputation Metaphor", bg: "linear-gradient(135deg, #142028, #080e12)" },
-        { name: "04 · Golden Statue Crumbling", hook: "Ego & Downfall Metaphor", bg: "linear-gradient(135deg, #252010, #100d05)" },
-        { name: "05 · Courtroom Tape Stamp", hook: "Legal Reality Verification", bg: "linear-gradient(135deg, #281414, #120808)" },
-        { name: "06 · Follower Count Plunge", hook: "Graphic Data Storytelling", bg: "linear-gradient(135deg, #1f1428, #0c0714)" },
-        { name: "07 · The Empty Penthouse", hook: "Luxury Isolation Angle", bg: "linear-gradient(135deg, #14261f, #07130e)" },
-        { name: "08 · Secret Whistleblower", hook: "Silhouetted Identity Hook", bg: "linear-gradient(135deg, #221a14, #0f0a06)" },
-        { name: "09 · 120px Mobile Squint Benchmark", hook: "Editorial Feed Clarity Test", bg: "linear-gradient(135deg, #191922, #0a0a10)" },
-        { name: "10 · High-Contrast Master", hook: "Approved Production Master", bg: "linear-gradient(135deg, #281720, #12090e)" }
-      ]
-    },
-    {
-      index: "04 / 08",
-      title: "SWAT Tactical Midnight Bodycam",
-      category: "GAMING / BODYCAM",
-      service: "Thumbnail Pack",
-      year: "2026",
-      desc: "Fisheye optical curvature, authentic HUD military camera timestamps, and jump-scare storytelling calibrated for simulation feeds.",
-      metrics: [
-        "Camera Mechanics: Fisheye optical distortion and authentic HUD font",
-        "Lighting: Infrared flashlight illumination creating immediate panic",
-        "Performance: +19.7% CTR lift and 2.4x channel average viewership"
-      ],
-      gradient: "linear-gradient(135deg, #1b281f 0%, #0d1410 100%)",
-      thumbs: [
-        { name: "01 · Fisheye Corner Breach", hook: "Doorway Creature Hook", bg: "linear-gradient(135deg, #1b281f, #0d1410)" },
-        { name: "02 · Infrared Weapon Flare", hook: "Direct Weapon Flash Lighting", bg: "linear-gradient(135deg, #152220, #081210)" },
-        { name: "03 · 03:42 AM HUD Timestamp", hook: "Law Enforcement Bodycam", bg: "linear-gradient(135deg, #1a1a24, #090912)" },
-        { name: "04 · Silhouette In Window", hook: "Micro Horror Discovery", bg: "linear-gradient(135deg, #221714, #100907)" },
-        { name: "05 · Glitch Compression", hook: "Artifact Distortion Hook", bg: "linear-gradient(135deg, #241424, #100710)" },
-        { name: "06 · Hallway Smoke Mist", hook: "Volumetric Shadow Lighting", bg: "linear-gradient(135deg, #13241b, #07120c)" },
-        { name: "07 · Heart Rate 180 BPM", hook: "Officer Panic Indicator", bg: "linear-gradient(135deg, #261414, #110707)" },
-        { name: "08 · Concrete Texture Floor", hook: "Ground Depth of Field", bg: "linear-gradient(135deg, #1c2016, #0d1008)" },
-        { name: "09 · 120px Mobile Pass", hook: "Instant Horror Read", bg: "linear-gradient(135deg, #171f24, #090e12)" },
-        { name: "10 · Approved Viral Master", hook: "+19.7% CTR Final Delivery", bg: "linear-gradient(135deg, #1a251e, #0b120d)" }
-      ]
-    },
-    {
-      index: "05 / 08",
-      title: "$1 vs $100,000 Island Vacation",
-      category: "CHALLENGE / CONTRAST",
-      service: "Single Thumbnail",
-      year: "2026",
-      desc: "Instant 50/50 visual juxtaposition that communicates wealth contrast in under 0.2 seconds on mobile feeds.",
-      metrics: [
-        "Composition: Razor-sharp center split dividing poverty vs luxury",
-        "Color Separation: Dirty mud-brown left vs warm golden-cyan right",
-        "Performance: +22.5% CTR lift and 4.2M views in first 7 days"
-      ],
-      gradient: "linear-gradient(135deg, #2a2414 0%, #141108 100%)",
-      thumbs: [
-        { name: "01 · 50/50 Dirt vs Gold Split", hook: "Ultra Contrast in 0.2s", bg: "linear-gradient(135deg, #2a2414, #141108)" },
-        { name: "02 · Wooden Raft vs Superyacht", hook: "Extreme Scale Disparity", bg: "linear-gradient(135deg, #142028, #081014)" },
-        { name: "03 · Rainstorm vs Golden Sunset", hook: "Weather Division", bg: "linear-gradient(135deg, #241620, #10080d)" },
-        { name: "04 · Canned Beans vs Caviar Plate", hook: "Food Value Perception", bg: "linear-gradient(135deg, #202414, #0d1008)" },
-        { name: "05 · Island Aerial Perspective", hook: "Deserted Sandbar vs Resort", bg: "linear-gradient(135deg, #142422, #071210)" },
-        { name: "06 · Hypothermic vs Sunburned", hook: "Dual Facial Reaction", bg: "linear-gradient(135deg, #281814, #120907)" },
-        { name: "07 · $1.00 vs $100,000 Price Stamp", hook: "Numerical Contrast Hook", bg: "linear-gradient(135deg, #1a1524, #0a0712)" },
-        { name: "08 · Campfire vs Villa Chandelier", hook: "Luminance Contrast", bg: "linear-gradient(135deg, #242214, #100f07)" },
-        { name: "09 · 120px Squint Benchmark", hook: "Zero Confusion on Mobile", bg: "linear-gradient(135deg, #1e1925, #0c0912)" },
-        { name: "10 · Master Channel Record", hook: "+22.5% CTR Delivery", bg: "linear-gradient(135deg, #282214, #120f07)" }
-      ]
-    },
-    {
-      index: "06 / 08",
-      title: "The Podcast That Broke The Internet",
-      category: "PODCAST / TALK SHOW",
-      service: "Monthly Retainer",
-      year: "2026",
-      desc: "Micro-expression retouching, studio microphone depth, and face-centric curiosity calibrated for talk show feeds.",
-      metrics: [
-        "Facial Retouching: Subtle micro-expression enhancement with zero plastic look",
-        "Studio Depth: Calibrated background bokeh matching Shure microphone focal plane",
-        "Performance: +17.3% CTR lift and recurring visual language retention"
-      ],
-      gradient: "linear-gradient(135deg, #24142a 0%, #120a15 100%)",
-      thumbs: [
-        { name: "01 · Shocked Reaction Cutout", hook: "Micro-Expression Retouched", bg: "linear-gradient(135deg, #24142a, #120a15)" },
-        { name: "02 · Studio Warm Rim Lighting", hook: "High End Talk Ambiance", bg: "linear-gradient(135deg, #241e14, #120d08)" },
-        { name: "03 · Shure SM7B Mic Silhouette", hook: "Authority Anchor", bg: "linear-gradient(135deg, #141c24, #080d12)" },
-        { name: "04 · Head in Hands Emotion", hook: "Regret & Revelation Hook", bg: "linear-gradient(135deg, #261418, #11070a)" },
-        { name: "05 · Dual Host vs Guest Stare", hook: "High Tension Conversation", bg: "linear-gradient(135deg, #182414, #091207)" },
-        { name: "06 · Unreleased Clip Border", hook: "Exclusive Leak Angle", bg: "linear-gradient(135deg, #1d1428, #0b0712)" },
-        { name: "07 · Studio Foam Backdrop", hook: "Authentic Production Environment", bg: "linear-gradient(135deg, #142421, #071210)" },
-        { name: "08 · Quote Teaser Hook", hook: "'I Regret Everything'", bg: "linear-gradient(135deg, #242416, #101007)" },
-        { name: "09 · 120px Small-Screen Pass", hook: "Face Retains High Contrast", bg: "linear-gradient(135deg, #1e1724, #0c0812)" },
-        { name: "10 · Final Production Deliverable", hook: "Multi-Million Impression Win", bg: "linear-gradient(135deg, #24152a, #100914)" }
-      ]
-    },
-    {
-      index: "07 / 08",
-      title: "Building An 8-Bit CPU In Minecraft",
-      category: "GAMING / SANDBOX",
-      service: "Single Thumbnail",
-      year: "2026",
-      desc: "Monumental isometric scale, redstone circuit glow, and unbelievable architectural scale communicating complexity.",
-      metrics: [
-        "Isometric Scale: Vast depth-of-field illustrating 400,000 redstone blocks",
-        "Illumination: Custom glow grading on repeater logic lines",
-        "Performance: +15.8% CTR lift in technical gaming vertical"
-      ],
-      gradient: "linear-gradient(135deg, #15272a 0%, #0a1315 100%)",
-      thumbs: [
-        { name: "01 · Epic Redstone Mega Circuit", hook: "Massive Architectural Scale", bg: "linear-gradient(135deg, #15272a, #0a1315)" },
-        { name: "02 · Screen Rendering In-Game", hook: "Playable Pong on Giant Screen", bg: "linear-gradient(135deg, #142216, #071208)" },
-        { name: "03 · Sunset Isometric Depth", hook: "Golden Angle Architecture", bg: "linear-gradient(135deg, #252014, #120e07)" },
-        { name: "04 · 8-Bit CPU Logic Gates", hook: "Technical Wonder Hook", bg: "linear-gradient(135deg, #24141d, #12080d)" },
-        { name: "05 · Player Floating in Vast Void", hook: "Scale Comparison Hook", bg: "linear-gradient(135deg, #141824, #080a12)" },
-        { name: "06 · Neon Repeater Lines", hook: "High Contrast Neon Circuits", bg: "linear-gradient(135deg, #261614, #120907)" },
-        { name: "07 · 'IT ACTUALLY BOOTS' Label", hook: "Curiosity Premise Hook", bg: "linear-gradient(135deg, #1e1426, #0c0712)" },
-        { name: "08 · Night Horizon Lighting", hook: "Ultra Clean Lighting Separation", bg: "linear-gradient(135deg, #142422, #071210)" },
-        { name: "09 · 120px Squint Benchmark", hook: "Readable Micro Architecture", bg: "linear-gradient(135deg, #152528, #091214)" },
-        { name: "10 · Master Upload Asset", hook: "+15.8% CTR Channel Record", bg: "linear-gradient(135deg, #142728, #081415)" }
-      ]
-    },
-    {
-      index: "08 / 08",
-      title: "Fixing Your Broken Attention Span",
-      category: "ESSAY / PSYCHOLOGY",
-      service: "Single Thumbnail",
-      year: "2026",
-      desc: "Ruthless minimalist metaphor with zero clutter, commanding attention in academic and educational feeds.",
-      metrics: [
-        "Radical Minimalism: Single stark metaphor without unnecessary floating icons",
-        "Color Palette: Deep monochrome with singular laser focus beam",
-        "Performance: +20.1% CTR lift on self-improvement audience"
-      ],
-      gradient: "linear-gradient(135deg, #2a1515 0%, #140a0a 100%)",
-      thumbs: [
-        { name: "01 · Monochromatic Burnout", hook: "Ruthless Minimalist Metaphor", bg: "linear-gradient(135deg, #2a1515, #140a0a)" },
-        { name: "02 · 10h Dopamine Detox Timer", hook: "Time Pressure Curiosity", bg: "linear-gradient(135deg, #161a24, #080a12)" },
-        { name: "03 · Golden Laser Focus Beam", hook: "Laser Clarity vs Chaos", bg: "linear-gradient(135deg, #242214, #111006)" },
-        { name: "04 · Phone Locked in Safe", hook: "Extreme Self-Control Hook", bg: "linear-gradient(135deg, #14241e, #07120e)" },
-        { name: "05 · Neuroscience Neuron Reset", hook: "Scientific Authority Angle", bg: "linear-gradient(135deg, #241424, #100710)" },
-        { name: "06 · Blank Journal Dark Room", hook: "Deep Work Focus Aesthetic", bg: "linear-gradient(135deg, #161e24, #080e12)" },
-        { name: "07 · Notification Chaos", hook: "Relatable Pain Point Hook", bg: "linear-gradient(135deg, #241814, #100906)" },
-        { name: "08 · Single White Dot in Void", hook: "Ultra Radical Minimalism", bg: "linear-gradient(135deg, #15151b, #09090d)" },
-        { name: "09 · 120px Small-Screen Pass", hook: "Dominates Educational Feeds", bg: "linear-gradient(135deg, #261616, #120808)" },
-        { name: "10 · Approved Master Packaging", hook: "+20.1% CTR Longform Winner", bg: "linear-gradient(135deg, #281414, #120707)" }
-      ]
-    }
-  ];
-
+  const projects = Array.from({length: 7}, (_, i) => ({index: `${String(i+1).padStart(2,'0')} / 07`, gradient: '#08080A', service: 'Direct Inquiry'}));
 
   // Supplied artwork: one actual image per project, with no invented variants.
   const suppliedArtwork = [{"src":"horror.webp","alt":"Horror gaming thumbnail"},{"src":"chocolate.webp","alt":"Chocolate comparison thumbnail"},{"src":"farm.webp","alt":"Farm challenge thumbnail"},{"src":"day-one.webp","alt":"Day one challenge thumbnail"},{"src":"prison-snow.webp","alt":"Snow prison escape thumbnail"},{"src":"prison-night.webp","alt":"Night prison escape thumbnail"},{"src":"fortnite-ramadan.webp","alt":"Fortnite Ramadan gaming thumbnail"}];
@@ -2602,11 +2404,11 @@ document.addEventListener('DOMContentLoaded', () => {
     activeSlide = 0;
     const p = projects[idx];
 
-    oIndex.textContent = `PROJECT ${p.index}`;
+    oIndex.textContent = `PERSONAL CONCEPT / ${p.index}`;
     oBannerBg.style.background = p.gradient;
     showArtwork(oBannerBg, p.image, p.alt);
-    document.querySelector(".os-right .os-heading").textContent = p.image ? "Artwork Details" : "Packaging Metrics";
-    document.querySelector(".iterations-header .os-heading").textContent = p.image ? "Artwork" : "Packaging Variations (10 in File)";
+    document.querySelector(".os-right .os-heading").textContent = p.image ? "Artwork Details" : "Artwork Details";
+    document.querySelector(".iterations-header .os-heading").textContent = p.image ? "Artwork" : "Artwork";
     oContext.textContent = p.desc;
     oBriefBtn.setAttribute('data-scope', p.service);
 
